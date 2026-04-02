@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
-import { ArrowRight, Github, ImageIcon, Linkedin, Mail } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import profilePhoto from '../../assets/profile-photo.png';
 
 export function Hero() {
   return (
@@ -65,7 +66,7 @@ export function Hero() {
               </a>
               <a
                 href="mailto:alex@example.com"
-                className="rounded-full border border-border bg-background/70 p-3 transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+                className="rounded-full border border-border bg-background/70 p-3 transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
               >
                 <Mail className="h-5 w-5" />
               </a>
@@ -73,16 +74,13 @@ export function Hero() {
           </div>
 
           <div className="glass-panel p-6 md:p-8">
-            <p className="text-sm uppercase tracking-[0.24em] text-primary">Picture</p>
-            <div className="mt-5 flex aspect-[4/5] items-center justify-center rounded-[24px] border border-dashed border-border bg-muted">
-              <div className="text-center">
-                <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full border border-primary/20 bg-white">
-                  <ImageIcon className="h-10 w-10 text-primary" />
-                </div>
-                <p className="mt-4 text-sm uppercase tracking-[0.18em] text-muted-foreground">
-                  Add your picture here
-                </p>
-              </div>
+            <p className="text-sm uppercase tracking-[0.24em] text-primary">Profile Overview</p>
+            <div className="mt-5 overflow-hidden rounded-[24px] border border-border bg-muted">
+              <img
+                src={profilePhoto}
+                alt="HIRORIMS KAYOMBO"
+                className="aspect-[4/5] w-full object-cover object-top"
+              />
             </div>
           </div>
         </div>

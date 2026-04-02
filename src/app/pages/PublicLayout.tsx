@@ -1,15 +1,18 @@
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import { Footer } from '../components/Footer';
 import { PublicNavbar } from '../components/PublicNavbar';
 
 export function PublicLayout() {
+  const location = useLocation();
+  const showFooter = location.pathname === '/';
+
   return (
     <div className="min-h-screen bg-background">
       <PublicNavbar />
       <main>
         <Outlet />
       </main>
-      <Footer />
+      {showFooter ? <Footer /> : null}
     </div>
   );
 }
