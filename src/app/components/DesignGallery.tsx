@@ -44,14 +44,17 @@ export function DesignGallery() {
   const [selectedDesign, setSelectedDesign] = useState<typeof designs[0] | null>(null);
 
   return (
-    <section id="designs" className="py-20 px-6 bg-card">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl mb-4">Design Portfolio</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+    <section id="designs" className="bg-card px-6 py-16 md:px-8 md:py-20">
+      <div className="section-shell">
+        <div className="section-header">
+          <span className="section-kicker">Design Work</span>
+          <h2 className="section-title">Selected design pieces.</h2>
+          <p className="section-subtitle">
+            A quick visual sample of brand, interface, and marketing work.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {designs.map((design) => (
             <div
               key={design.id}

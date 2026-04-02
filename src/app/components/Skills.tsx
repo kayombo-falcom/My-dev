@@ -11,7 +11,7 @@ const skills = {
     title: 'Design',
     icon: Palette,
     color: 'text-accent',
-    items: ['Figma', 'Photoshop', 'Illustrator', 'UI/UX', 'Branding', 'Motion Design']
+    items: ['Photoshop', 'Illustrator', 'UI/UX', 'Branding', 'Motion Design', 'Creative Direction']
   },
   tools: {
     title: 'Tools',

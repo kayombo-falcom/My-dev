@@ -16,7 +16,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="px-6 py-24 md:px-8">
+    <section id="contact" className="px-6 py-16 md:px-8 md:py-20">
       <div className="section-shell">
         <div className="grid gap-8 lg:grid-cols-[minmax(18rem,0.8fr)_minmax(0,1.2fr)] lg:items-start lg:gap-10">
           <div className="glass-panel p-8 md:p-10">

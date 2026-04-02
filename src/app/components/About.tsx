@@ -2,7 +2,7 @@ import { Award, Heart, User } from 'lucide-react';
 
 export function About() {
   return (
-    <section id="about" className="px-6 py-24 md:px-8">
+    <section id="about" className="px-6 py-16 md:px-8 md:py-20">
       <div className="section-shell">
         <div className="section-header">
           <span className="section-kicker">About</span>

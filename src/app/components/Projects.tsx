@@ -32,7 +32,7 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="px-6 py-24 md:px-8">
+    <section id="projects" className="px-6 py-16 md:px-8 md:py-20">
       <div className="section-shell">
         <div className="section-header">
           <span className="section-kicker">Featured Work</span>
