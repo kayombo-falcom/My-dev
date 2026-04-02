@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, Mail, User as UserIcon, MessageSquare } from 'lucide-react';
+import { Mail, MessageSquare, Send, User as UserIcon } from 'lucide-react';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -16,72 +16,86 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 bg-card">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl mb-4">Get In Touch</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mb-6" />
-          <p className="text-lg text-muted-foreground">
-            Have a project in mind? Let's work together to create something amazing.
-          </p>
+    <section id="contact" className="px-6 py-24 md:px-8">
+      <div className="section-shell">
+        <div className="grid gap-8 lg:grid-cols-[minmax(18rem,0.8fr)_minmax(0,1.2fr)] lg:items-start lg:gap-10">
+          <div className="glass-panel p-8 md:p-10">
+            <span className="section-kicker">Contact</span>
+            <h2 className="mt-5 text-4xl md:text-5xl">Bring the next idea to life.</h2>
+            <p className="mt-5 text-lg leading-8 text-muted-foreground">
+              Have a product, brand refresh, or portfolio project in mind? I can help shape the visual
+              direction and build the frontend with the same level of care.
+            </p>
+
+            <div className="mt-8 space-y-4">
+              <div className="rounded-2xl border border-border bg-background/60 p-4">
+                <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">Best for</p>
+                <p className="mt-2">Landing pages, product UI, portfolio sites, and design-to-code work.</p>
+              </div>
+              <div className="rounded-2xl border border-border bg-background/60 p-4">
+                <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">Response time</p>
+                <p className="mt-2">Usually within 1 business day for new project inquiries.</p>
+              </div>
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit} className="glass-panel space-y-6 self-start p-8 md:p-10">
+            <div>
+              <label htmlFor="name" className="mb-2 flex items-center gap-2 text-sm">
+                <UserIcon className="h-4 w-4" />
+                Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full rounded-2xl border border-border bg-background/80 px-4 py-3.5 transition-all duration-300 focus:border-primary focus:outline-none"
+                placeholder="Your name"
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="mb-2 flex items-center gap-2 text-sm">
+                <Mail className="h-4 w-4" />
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full rounded-2xl border border-border bg-background/80 px-4 py-3.5 transition-all duration-300 focus:border-primary focus:outline-none"
+                placeholder="your.email@example.com"
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className="mb-2 flex items-center gap-2 text-sm">
+                <MessageSquare className="h-4 w-4" />
+                Message
+              </label>
+              <textarea
+                id="message"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                className="min-h-[170px] w-full resize-vertical rounded-2xl border border-border bg-background/80 px-4 py-3.5 transition-all duration-300 focus:border-primary focus:outline-none"
+                placeholder="Tell me about your project..."
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:bg-primary/90"
+            >
+              <Send className="h-5 w-5" />
+              Send Message
+            </button>
+          </form>
         </div>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="name" className="flex items-center gap-2 mb-2 text-sm">
-              <UserIcon className="w-4 h-4" />
-              Name
-            </label>
-            <input
-              id="name"
-              type="text"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none transition-all duration-300"
-              placeholder="Your name"
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor="email" className="flex items-center gap-2 mb-2 text-sm">
-              <Mail className="w-4 h-4" />
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none transition-all duration-300"
-              placeholder="your.email@example.com"
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor="message" className="flex items-center gap-2 mb-2 text-sm">
-              <MessageSquare className="w-4 h-4" />
-              Message
-            </label>
-            <textarea
-              id="message"
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none transition-all duration-300 min-h-[150px] resize-vertical"
-              placeholder="Tell me about your project..."
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl"
-          >
-            <Send className="w-5 h-5" />
-            Send Message
-          </button>
-        </form>
       </div>
     </section>
   );

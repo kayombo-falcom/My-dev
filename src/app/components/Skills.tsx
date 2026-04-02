@@ -23,30 +23,39 @@ const skills = {
 
 export function Skills() {
   return (
-    <section id="skills" className="py-20 px-6 bg-card">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl mb-4">Skills & Expertise</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+    <section id="skills" className="bg-card/40 px-6 py-24 md:px-8">
+      <div className="section-shell">
+        <div className="section-header">
+          <span className="section-kicker">Capabilities</span>
+          <h2 className="section-title">The toolkit behind the work.</h2>
+          <p className="section-subtitle">
+            Strategy, interface craft, and implementation all live in the same workflow, which keeps
+            projects sharper and faster.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
           {Object.values(skills).map((category) => {
             const Icon = category.icon;
             return (
               <div
                 key={category.title}
-                className="p-8 rounded-2xl bg-background border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl"
+                className="glass-panel group flex h-full flex-col p-8 text-left transition-all duration-300 hover:-translate-y-1 hover:border-primary/35"
               >
-                <div className={`inline-flex p-4 rounded-xl bg-card mb-6 ${category.color}`}>
-                  <Icon className="w-8 h-8" />
+                <div className={`mb-6 inline-flex rounded-2xl bg-background/80 p-4 ${category.color}`}>
+                  <Icon className="h-8 w-8" />
                 </div>
-                <h3 className="text-2xl mb-6">{category.title}</h3>
-                <div className="flex flex-wrap gap-2">
+                <h3 className="text-2xl">{category.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                  {category.title === 'Development' && 'Frontend systems, APIs, and scalable product foundations.'}
+                  {category.title === 'Design' && 'Visual language, interface direction, and brand-consistent experiences.'}
+                  {category.title === 'Tools' && 'Delivery workflows that keep builds stable and teams moving.'}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
                   {category.items.map((skill) => (
                     <span
                       key={skill}
-                      className="px-4 py-2 rounded-lg bg-card text-sm border border-border hover:border-primary/50 transition-all duration-300"
+                      className="mt-3 rounded-full border border-border bg-background/75 px-4 py-2 text-sm transition-all duration-300 group-hover:border-primary/25"
                     >
                       {skill}
                     </span>

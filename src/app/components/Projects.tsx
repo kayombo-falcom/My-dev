@@ -32,58 +32,67 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="py-20 px-6 bg-background">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl mb-4">Featured Projects</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+    <section id="projects" className="px-6 py-24 md:px-8">
+      <div className="section-shell">
+        <div className="section-header">
+          <span className="section-kicker">Featured Work</span>
+          <h2 className="section-title">Selected projects with product thinking and visual range.</h2>
+          <p className="section-subtitle">
+            A few examples of how I combine interface design, frontend architecture, and brand-aware
+            presentation into one cohesive result.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
             <div
               key={project.id}
-              className="group rounded-2xl bg-card border border-border overflow-hidden hover:shadow-2xl transition-all duration-300"
+              className="glass-panel group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="relative overflow-hidden aspect-video">
+              <div className="relative aspect-video overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
 
-              <div className="p-6">
-                <h3 className="text-xl mb-3">{project.title}</h3>
-                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+              <div className="flex flex-1 flex-col p-6">
+                <div className="mb-3 flex items-center justify-between gap-4">
+                  <h3 className="text-2xl">{project.title}</h3>
+                  <span className="rounded-full bg-secondary px-3 py-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                    0{project.id}
+                  </span>
+                </div>
+                <p className="mb-5 text-sm leading-7 text-muted-foreground">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="mb-6 flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs"
+                      className="rounded-full bg-primary/10 px-3 py-1 text-xs text-primary"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex gap-3">
+                <div className="mt-auto flex gap-3 pt-2">
                   <a
                     href={project.demo}
-                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 text-sm"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm text-primary-foreground transition-all duration-300 hover:bg-primary/90"
                   >
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="h-4 w-4" />
                     Demo
                   </a>
                   <a
                     href={project.github}
-                    className="flex items-center justify-center gap-2 px-4 py-2 bg-card border border-border rounded-lg hover:bg-secondary transition-all duration-300 text-sm"
+                    className="flex items-center justify-center gap-2 rounded-full border border-border bg-card/70 px-4 py-2.5 text-sm transition-all duration-300 hover:bg-secondary"
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="h-4 w-4" />
                   </a>
                 </div>
               </div>
