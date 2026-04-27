@@ -22,8 +22,8 @@ export function PublicNavbar() {
                 className={({ isActive }) =>
                   `rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors duration-300 ${
                     isActive
-                      ? '!border-primary !bg-primary !text-primary-foreground'
-                      : 'text-muted-foreground hover:bg-muted hover:text-foreground dark:bg-card dark:hover:bg-muted'
+                      ? 'border-primary bg-primary text-primary-foreground'
+                      : 'text-muted-foreground hover:border-primary/30 hover:bg-muted hover:text-foreground dark:bg-card dark:hover:bg-muted'
                   }`
                 }
               >
@@ -46,8 +46,8 @@ export function PublicNavbar() {
               className={({ isActive }) =>
                 `rounded-full border border-border bg-background px-4 py-3 text-center text-sm font-medium text-foreground transition-colors duration-300 ${
                   isActive
-                    ? '!border-primary !bg-primary !text-primary-foreground'
-                    : 'text-muted-foreground hover:bg-muted dark:bg-card dark:hover:bg-muted'
+                    ? 'border-primary bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:border-primary/30 hover:bg-muted dark:bg-card dark:hover:bg-muted'
                 }`
               }
             >

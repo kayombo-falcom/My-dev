@@ -194,6 +194,24 @@
 }
 
 @layer components {
+  :root:not(.dark) .bg-primary {
+    background-color: #53ad84;
+    background-image: linear-gradient(180deg, #57b68d 0%, #53ad84 40%, #4b9975 100%);
+  }
+
+  :root:not(.dark) .bg-primary:hover {
+    background-image: linear-gradient(180deg, #62c398 0%, #58b58a 40%, #4f9f7a 100%);
+  }
+
+  .dark .bg-primary {
+    background-color: #1d4e3f;
+    background-image: linear-gradient(180deg, #173c31 0%, #1d4e3f 45%, #14382d 100%);
+  }
+
+  .dark .bg-primary:hover {
+    background-image: linear-gradient(180deg, #1b4739 0%, #225a49 45%, #174034 100%);
+  }
+
   .section-shell {
     @apply mx-auto w-full max-w-6xl;
   }
