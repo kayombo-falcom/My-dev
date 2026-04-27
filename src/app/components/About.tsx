@@ -30,19 +30,28 @@ const principles = [
 
 export function About() {
   return (
-    <section id="about" className="px-6 py-16 md:px-8 md:py-20">
-      <div className="section-shell">
-        <div className="section-header">
-          <span className="section-kicker">About Me</span>
-          <h2 className="section-title">Building digital solutions that are clear, useful, and safe.</h2>
-          <p className="section-subtitle">
+    <section id="about" className="bg-background px-6 py-16 md:px-8 md:py-20">
+      <div className="mx-auto max-w-[1600px]">
+        <div className="max-w-4xl">
+          <div className="flex items-start gap-4">
+            <span className="mt-2 h-12 w-1.5 bg-[#56b98b]" />
+            <div>
+              <h2 className="text-4xl font-semibold text-foreground md:text-5xl">
+                About Me
+              </h2>
+              <p className="mt-5 text-base leading-8 text-muted-foreground md:text-lg">
+                Building digital solutions that are clear, useful, and safe.
+              </p>
+              <p className="mt-4 text-base leading-8 text-muted-foreground md:text-lg">
             I work across software development, design, and security awareness to create modern
             experiences that look professional, function reliably, and serve users well.
-          </p>
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="rounded-[32px] border border-border bg-card/96 shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
-          <div className="grid gap-10 px-8 py-8 md:px-10 md:py-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)] lg:gap-12">
+        <div className="mt-14 border-t border-border pt-12">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)] lg:gap-12">
             <div>
               <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Profile Summary</p>
               <h3 className="mt-3 max-w-3xl text-2xl leading-tight md:text-3xl">

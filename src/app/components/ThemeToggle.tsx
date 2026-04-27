@@ -19,7 +19,7 @@ export function ThemeToggle({ showLabel = false, lightOnDark = false }: ThemeTog
       } ${
         lightOnDark
           ? 'text-white'
-          : 'border-border bg-white text-foreground hover:bg-muted'
+          : 'border-border bg-background text-foreground hover:bg-muted dark:bg-card dark:hover:bg-muted'
       }`}
       aria-label="Toggle theme"
       aria-pressed={isDark}
@@ -29,14 +29,14 @@ export function ThemeToggle({ showLabel = false, lightOnDark = false }: ThemeTog
         className={`relative inline-flex h-8 w-15 items-center rounded-full border transition-colors duration-300 ${
           lightOnDark
             ? 'border-white/35 bg-white/20'
-            : 'border-[#d6dce5] bg-[#e9eef4]'
+            : 'border-border bg-muted dark:bg-background'
         }`}
       >
         <span
           className={`absolute top-1 flex h-6 w-6 items-center justify-center rounded-full transition-all duration-300 ${
             isDark
-              ? 'left-[2.1rem] bg-[#1f2937] text-white'
-              : 'left-1 bg-white text-[#4b5563]'
+              ? 'left-[2.1rem] bg-secondary text-secondary-foreground'
+              : 'left-1 bg-primary text-primary-foreground'
           }`}
         >
           {isDark ? <Moon className="h-3.5 w-3.5" /> : <Sun className="h-3.5 w-3.5" />}

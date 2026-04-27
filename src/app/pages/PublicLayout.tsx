@@ -1,10 +1,8 @@
 import { Outlet, useLocation } from 'react-router';
-import { Footer } from '../components/Footer';
 import { PublicNavbar } from '../components/PublicNavbar';
 
 export function PublicLayout() {
   const location = useLocation();
-  const showFooter = location.pathname === '/';
   const showNavbar = location.pathname !== '/';
 
   return (
@@ -13,7 +11,6 @@ export function PublicLayout() {
       <main>
         <Outlet />
       </main>
-      {showFooter ? <Footer /> : null}
     </div>
   );
 }

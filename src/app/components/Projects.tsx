@@ -32,22 +32,31 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="px-6 py-16 md:px-8 md:py-20">
-      <div className="section-shell">
-        <div className="section-header">
-          <span className="section-kicker">Featured Work</span>
-          <h2 className="section-title">Selected projects with product thinking and visual range.</h2>
-          <p className="section-subtitle">
+    <section id="projects" className="bg-background px-6 py-16 md:px-8 md:py-20">
+      <div className="mx-auto max-w-[1600px]">
+        <div className="max-w-4xl">
+          <div className="flex items-start gap-4">
+            <span className="mt-2 h-12 w-1.5 bg-[#56b98b]" />
+            <div>
+              <h2 className="text-4xl font-semibold text-foreground md:text-5xl">
+                Featured Work
+              </h2>
+              <p className="mt-5 text-base leading-8 text-muted-foreground md:text-lg">
+                Selected projects with product thinking and visual range.
+              </p>
+              <p className="mt-4 text-base leading-8 text-muted-foreground md:text-lg">
             A few examples of how I combine interface design, frontend architecture, and brand-aware
             presentation into one cohesive result.
-          </p>
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
             <div
               key={project.id}
-              className="glass-panel group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1"
+              className="group flex h-full flex-col overflow-hidden border border-border bg-background transition-colors duration-300 hover:border-primary/30"
             >
               <div className="relative aspect-video overflow-hidden">
                 <img
@@ -61,7 +70,7 @@ export function Projects() {
               <div className="flex flex-1 flex-col p-6">
                 <div className="mb-3 flex items-center justify-between gap-4">
                   <h3 className="text-2xl">{project.title}</h3>
-                  <span className="rounded-full bg-secondary px-3 py-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  <span className="rounded-full border border-border px-3 py-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">
                     0{project.id}
                   </span>
                 </div>
@@ -83,14 +92,14 @@ export function Projects() {
                 <div className="mt-auto flex gap-3 pt-2">
                   <a
                     href={project.demo}
-                    className="flex flex-1 items-center justify-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm text-primary-foreground transition-all duration-300 hover:bg-primary/90"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm text-primary-foreground transition-colors duration-300 hover:bg-primary/90"
                   >
                     <ExternalLink className="h-4 w-4" />
                     Demo
                   </a>
                   <a
                     href={project.github}
-                    className="flex items-center justify-center gap-2 rounded-full border border-border bg-card/70 px-4 py-2.5 text-sm transition-all duration-300 hover:bg-secondary"
+                    className="flex items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm transition-colors duration-300 hover:bg-muted"
                   >
                     <Github className="h-4 w-4" />
                   </a>

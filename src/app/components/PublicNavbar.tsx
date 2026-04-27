@@ -20,10 +20,10 @@ export function PublicNavbar() {
                 to={item.to}
                 end={item.to === '/'}
                 className={({ isActive }) =>
-                  `rounded-full border border-[#dbe2ea] bg-white px-4 py-2 text-sm font-medium text-foreground transition-colors duration-300 ${
+                  `rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors duration-300 ${
                     isActive
-                      ? '!border-[#56b98b] !bg-[#56b98b] !text-white'
-                      : 'text-muted-foreground hover:bg-[#f4f7fa] hover:text-foreground'
+                      ? '!border-primary !bg-primary !text-primary-foreground'
+                      : 'text-muted-foreground hover:bg-muted hover:text-foreground dark:bg-card dark:hover:bg-muted'
                   }`
                 }
               >
@@ -44,10 +44,10 @@ export function PublicNavbar() {
               to={item.to}
               end={item.to === '/'}
               className={({ isActive }) =>
-                `rounded-full border border-[#dbe2ea] bg-white px-4 py-3 text-center text-sm font-medium text-foreground transition-colors duration-300 ${
+                `rounded-full border border-border bg-background px-4 py-3 text-center text-sm font-medium text-foreground transition-colors duration-300 ${
                   isActive
-                    ? '!border-[#56b98b] !bg-[#56b98b] !text-white'
-                    : 'text-muted-foreground hover:bg-[#f4f7fa]'
+                    ? '!border-primary !bg-primary !text-primary-foreground'
+                    : 'text-muted-foreground hover:bg-muted dark:bg-card dark:hover:bg-muted'
                 }`
               }
             >
