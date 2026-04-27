@@ -47,7 +47,6 @@ export function DesignGallery() {
     <section id="designs" className="bg-card px-6 py-16 md:px-8 md:py-20">
       <div className="section-shell">
         <div className="section-header">
-          <span className="section-kicker">Design Work</span>
           <h2 className="section-title">Selected design pieces.</h2>
           <p className="section-subtitle">
             A quick visual sample of brand, interface, and marketing work.

@@ -1,57 +1,119 @@
-import { Award, Heart, User } from 'lucide-react';
+import { Code2, LayoutTemplate, ShieldCheck } from 'lucide-react';
+
+const focusAreas = [
+  {
+    title: 'Software Development',
+    description:
+      'I build responsive and reliable web applications across front-end and back-end workflows, with attention to performance, maintainability, and usability.',
+    icon: Code2,
+  },
+  {
+    title: 'Graphic & UI/UX Design',
+    description:
+      'My design work includes interfaces, logos, posters, branding, and banners, with a focus on clarity, structure, and strong visual communication.',
+    icon: LayoutTemplate,
+  },
+  {
+    title: 'Security Awareness',
+    description:
+      'I promote safe online practices and support simple, practical habits that help users protect data and reduce avoidable digital risks.',
+    icon: ShieldCheck,
+  },
+];
+
+const principles = [
+  'Clear communication and structured problem-solving',
+  'Clean code that is simple to understand and maintain',
+  'Professional visual design with strong usability',
+  'Reliable collaboration, accountability, and continuous learning',
+];
 
 export function About() {
   return (
     <section id="about" className="px-6 py-16 md:px-8 md:py-20">
       <div className="section-shell">
         <div className="section-header">
-          <span className="section-kicker">About</span>
-          <h2 className="section-title">A hybrid practice shaped by development, design, and storytelling.</h2>
+          <span className="section-kicker">About Me</span>
+          <h2 className="section-title">Building digital solutions that are clear, useful, and safe.</h2>
           <p className="section-subtitle">
-            I work across interface design and engineering so ideas keep their character all the
-            way from concept to production.
+            I work across software development, design, and security awareness to create modern
+            experiences that look professional, function reliably, and serve users well.
           </p>
         </div>
 
-        <div className="grid gap-10 lg:grid-cols-[minmax(18rem,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-14">
-          <div className="glass-panel relative overflow-hidden p-8 md:p-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-accent/15" />
-            <div className="relative flex aspect-[4/5] items-end justify-between rounded-[24px] border border-border bg-background/70 p-6">
-              <User className="h-28 w-28 text-primary md:h-36 md:w-36" />
-              <div className="max-w-[13rem] text-right">
-                <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Approach</p>
-                <p className="mt-3 text-lg leading-7">
-                  Clean systems, strong mood, and details people actually notice.
+        <div className="rounded-[32px] border border-border bg-card/96 shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
+          <div className="grid gap-10 px-8 py-8 md:px-10 md:py-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)] lg:gap-12">
+            <div>
+              <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Profile Summary</p>
+              <h3 className="mt-3 max-w-3xl text-2xl leading-tight md:text-3xl">
+                Junior Software Developer, Graphic Designer, and Security Awareness Specialist
+              </h3>
+
+              <div className="mt-8 space-y-5">
+                <p className="text-base leading-8 text-muted-foreground md:text-lg">
+                  I am a junior software developer and graphic designer with a focus on security
+                  awareness. I enjoy building digital solutions that are functional, visually
+                  appealing, and safe for users.
+                </p>
+
+                <p className="text-base leading-8 text-muted-foreground md:text-lg">
+                  I work on both front-end and back-end development, creating responsive and
+                  reliable web applications that perform well across different devices. I focus on
+                  writing clean and simple code that is easy to understand and maintain, and I
+                  enjoy turning ideas into real systems that solve everyday problems.
+                </p>
+
+                <p className="text-base leading-8 text-muted-foreground md:text-lg">
+                  Alongside development, I also work in graphic design. My work includes UI/UX
+                  design, logos, posters, branding, and banners. I aim to create designs that are
+                  clear, modern, and easy to use, with careful attention to layout, color, and
+                  structure.
+                </p>
+
+                <p className="text-base leading-8 text-muted-foreground md:text-lg">
+                  I also work as a Security Awareness Specialist, helping promote safe online
+                  practices and practical ways for users to protect their data. I believe
+                  thoughtful design, dependable systems, and good security habits should work
+                  together.
+                </p>
+
+                <p className="text-base leading-8 text-muted-foreground md:text-lg">
+                  I am always learning and improving my skills by exploring new tools,
+                  technologies, and design ideas. I am focused, reliable, open to feedback, and
+                  committed to creating solutions that are simple, professional, and effective.
                 </p>
               </div>
             </div>
-          </div>
 
-          <div className="space-y-6 pt-1">
-            <p className="text-lg leading-8 text-muted-foreground">
-              I'm a passionate Full Stack Developer and Graphic Designer with over 5 years of experience
-              creating seamless digital experiences. I bridge the gap between development and design,
-              ensuring every project is both functional and visually stunning.
-            </p>
-
-            <p className="text-lg leading-8 text-muted-foreground">
-              My expertise spans from crafting responsive web applications to designing compelling
-              visual identities. I believe great products are born from the perfect marriage of
-              beautiful design and robust code.
-            </p>
-
-            <div className="grid gap-4 pt-4 sm:grid-cols-2">
-              <div className="glass-panel flex h-full flex-col p-6">
-                <Award className="mb-3 h-8 w-8 text-primary" />
-                <h3 className="text-3xl">50+</h3>
-                <p className="mt-2 text-sm text-muted-foreground">Projects completed across web and brand work</p>
+            <aside className="border-t border-border pt-8 lg:border-l lg:border-t-0 lg:pt-0 lg:pl-8">
+              <div>
+                <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Core Focus</p>
+                <div className="mt-5 space-y-5">
+                  {focusAreas.map(({ title, description, icon: Icon }) => (
+                    <div key={title} className="flex gap-4">
+                      <div className="mt-1 rounded-xl bg-primary/10 p-2 text-primary">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h3 className="text-base">{title}</h3>
+                        <p className="mt-2 text-sm leading-7 text-muted-foreground">{description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="glass-panel flex h-full flex-col p-6">
-                <Heart className="mb-3 h-8 w-8 text-accent" />
-                <h3 className="text-3xl">40+</h3>
-                <p className="mt-2 text-sm text-muted-foreground">Client partnerships built on clarity and trust</p>
+
+              <div className="mt-8 border-t border-border pt-8">
+                <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Working Principles</p>
+                <ul className="mt-5 space-y-3 text-sm leading-7 text-muted-foreground">
+                  {principles.map((principle) => (
+                    <li key={principle} className="border-b border-border/60 pb-3 last:border-b-0 last:pb-0">
+                      {principle}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
+            </aside>
           </div>
         </div>
       </div>

@@ -20,10 +20,10 @@ export function PublicNavbar() {
                 to={item.to}
                 end={item.to === '/'}
                 className={({ isActive }) =>
-                  `rounded-full border border-border bg-card/70 px-4 py-2 text-sm font-medium text-foreground shadow-[0_20px_45px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-300 ${
+                  `rounded-full border border-[#dbe2ea] bg-white px-4 py-2 text-sm font-medium text-foreground transition-colors duration-300 ${
                     isActive
-                      ? '!border-[#2563EB] !bg-[#2563EB] !text-white shadow-lg shadow-primary/25'
-                      : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                      ? '!border-[#56b98b] !bg-[#56b98b] !text-white'
+                      : 'text-muted-foreground hover:bg-[#f4f7fa] hover:text-foreground'
                   }`
                 }
               >
@@ -44,10 +44,10 @@ export function PublicNavbar() {
               to={item.to}
               end={item.to === '/'}
               className={({ isActive }) =>
-                `rounded-full border border-border bg-card/70 px-4 py-3 text-center text-sm font-medium text-foreground shadow-[0_20px_45px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-300 ${
+                `rounded-full border border-[#dbe2ea] bg-white px-4 py-3 text-center text-sm font-medium text-foreground transition-colors duration-300 ${
                   isActive
-                    ? '!border-[#2563EB] !bg-[#2563EB] !text-white'
-                    : 'text-muted-foreground hover:bg-muted'
+                    ? '!border-[#56b98b] !bg-[#56b98b] !text-white'
+                    : 'text-muted-foreground hover:bg-[#f4f7fa]'
                 }`
               }
             >

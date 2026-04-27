@@ -23,39 +23,48 @@ const skills = {
 
 export function Skills() {
   return (
-    <section id="skills" className="bg-card/40 px-6 py-24 md:px-8">
-      <div className="section-shell">
-        <div className="section-header">
-          <span className="section-kicker">Capabilities</span>
-          <h2 className="section-title">The toolkit behind the work.</h2>
-          <p className="section-subtitle">
-            Strategy, interface craft, and implementation all live in the same workflow, which keeps
-            projects sharper and faster.
-          </p>
+    <section id="skills" className="bg-white px-6 py-20 md:px-10">
+      <div className="mx-auto max-w-[1600px]">
+        <div className="border-t border-[#ececec] pt-14">
+          <div className="max-w-5xl">
+            <div className="flex items-start gap-5">
+              <span className="mt-2 h-12 w-1.5 bg-[#56b98b]" />
+              <div>
+                <h2 className="text-4xl font-semibold text-[#1f2937] md:text-5xl">What I do</h2>
+                <p className="mt-5 text-lg leading-9 text-[#4b5563]">
+                  I work across software development, interface design, and production tools to
+                  create websites and digital products that are clear, practical, and professional.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-14 grid gap-10 md:grid-cols-2 xl:grid-cols-3">
           {Object.values(skills).map((category) => {
             const Icon = category.icon;
             return (
               <div
                 key={category.title}
-                className="glass-panel group flex h-full flex-col p-8 text-left transition-all duration-300 hover:-translate-y-1 hover:border-primary/35"
+                className="group flex h-full flex-col text-left"
               >
-                <div className={`mb-6 inline-flex rounded-2xl bg-background/80 p-4 ${category.color}`}>
-                  <Icon className="h-8 w-8" />
+                <div className={`mb-5 inline-flex ${category.color}`}>
+                  <Icon className="h-10 w-10" />
                 </div>
-                <h3 className="text-2xl">{category.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                  {category.title === 'Development' && 'Frontend systems, APIs, and scalable product foundations.'}
-                  {category.title === 'Design' && 'Visual language, interface direction, and brand-consistent experiences.'}
-                  {category.title === 'Tools' && 'Delivery workflows that keep builds stable and teams moving.'}
+                <h3 className="text-2xl font-semibold text-[#1f2937]">{category.title}</h3>
+                <p className="mt-3 text-base leading-8 text-[#4b5563]">
+                  {category.title === 'Development' &&
+                    'Frontend systems, APIs, and responsive web experiences built to be maintainable and reliable.'}
+                  {category.title === 'Design' &&
+                    'Visual direction, user interface structure, and brand-aligned design decisions that improve clarity.'}
+                  {category.title === 'Tools' &&
+                    'Practical workflows and modern tools that help projects stay organized and move smoothly.'}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-5 flex flex-wrap gap-2">
                   {category.items.map((skill) => (
                     <span
                       key={skill}
-                      className="mt-3 rounded-full border border-border bg-background/75 px-4 py-2 text-sm transition-all duration-300 group-hover:border-primary/25"
+                      className="rounded-full border border-[#d8dee8] bg-[#f8fafc] px-4 py-2 text-sm text-[#334155]"
                     >
                       {skill}
                     </span>
