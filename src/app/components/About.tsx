@@ -23,15 +23,25 @@ import { TbApi, TbBrandAdobeIllustrator, TbBrandAdobePhotoshop } from 'react-ico
 
 const education = [
   {
-    title: 'Software Development & Continuous Learning',
-    description:
-      'Building practical knowledge across front-end development, back-end systems, UI implementation, and modern web workflows through projects and ongoing study.',
+    institute: 'Institute of Accountancy Arusha',
+    program: 'Bachelor of Science in Cyber Security',
+    studied:
+      'Built a strong foundation in cyber security, digital protection, and safe technology practices through academic study and practical learning.',
   },
   {
-    title: 'Graphic Design & UI/UX Practice',
-    description:
-      'Developing design thinking through interface work, branding, layout structure, typography, and visual communication for digital products.',
+    institute: 'IT Knowledge Hub Tanzania',
+    program: 'Software Engineering',
+    studied:
+      'Developed software engineering skills through hands-on projects, modern development tools, and practical implementation work.',
   },
+];
+
+const certificates = [
+  'Bachelor of Science in Cyber Security',
+  'Certificate of Professional Associate in IT',
+  'Certificate of Scrum Methodology',
+  'Certificate of Presentation Skills',
+  'Certificate of Customer Focus',
 ];
 
 const skills = [
@@ -172,25 +182,39 @@ const experiences = [
 ];
 
 const goals = [
-  'Grow into a stronger full-stack developer who can deliver complete digital products with confidence.',
-  'Build professional user experiences that combine good engineering with clear and thoughtful design.',
-  'Keep improving technical depth, design quality, and communication through real-world project work.',
+  'To develop secure, reliable, and user-friendly digital solutions by combining software development, design, and security awareness. I focus on building applications that are simple to use, visually clear, and efficient.',
+  'I aim to continuously improve my skills, write clean and maintainable code, and contribute to meaningful projects. I am committed to delivering quality work and growing in my career.',
 ];
 
 const sectionCards = [
   {
     title: 'Education',
     description:
-      'A growing foundation in software development, UI/UX, and design built through continuous practice and hands-on projects.',
+      'Academic and practical training that supports my work in cyber security and software development.',
     icon: GraduationCap,
     content: (
       <div className="space-y-4">
-        {education.map(({ title, description }) => (
-          <div key={title} className="rounded-2xl border border-border bg-card/70 p-5">
-            <h4 className="text-base text-foreground">{title}</h4>
-            <p className="mt-2 text-sm leading-7 text-muted-foreground">{description}</p>
+        {education.map(({ institute, program, studied }) => (
+          <div key={program} className="rounded-2xl border border-border bg-card/70 p-5">
+            <p className="text-xs uppercase tracking-[0.18em] text-primary">{institute}</p>
+            <h4 className="mt-2 text-base text-foreground">{program}</h4>
+            <p className="mt-2 text-sm leading-7 text-muted-foreground">{studied}</p>
           </div>
         ))}
+
+        <div className="rounded-2xl border border-border bg-card/70 p-5">
+          <p className="text-xs uppercase tracking-[0.18em] text-primary">Certificates</p>
+          <ul className="mt-3 space-y-2">
+            {certificates.map((certificate) => (
+              <li
+                key={certificate}
+                className="rounded-xl bg-background/70 px-4 py-3 text-sm text-muted-foreground"
+              >
+                {certificate}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     ),
   },
@@ -233,7 +257,7 @@ const sectionCards = [
   },
   {
     title: 'Experience',
-    description: 'Main areas of work and contribution across the digital space.',
+    description: 'Key roles and contributions across software development, design, and IT support.',
     icon: BriefcaseBusiness,
     content: (
       <div className="space-y-4">
@@ -251,7 +275,7 @@ const sectionCards = [
   },
   {
     title: 'Goals',
-    description: 'Professional direction and the kind of impact I want to keep building toward.',
+    description: 'The direction I am continuing to build toward in my career and work.',
     icon: Target,
     content: (
       <ul className="space-y-3">
@@ -278,11 +302,11 @@ export function About() {
             <div>
               <h2 className="text-4xl font-semibold text-foreground md:text-5xl">About Me</h2>
               <p className="mt-5 text-base leading-8 text-muted-foreground md:text-lg">
-                Building digital solutions that are clear, useful, and professional.
+                Building digital solutions that are clear, useful, and reliable.
               </p>
               <p className="mt-4 max-w-3xl text-base leading-8 text-muted-foreground md:text-lg">
                 I work across software development, design, and security awareness to create
-                modern experiences that look polished, function reliably, and serve users well.
+                clear digital experiences that function reliably and serve users effectively.
               </p>
             </div>
           </div>
@@ -291,15 +315,15 @@ export function About() {
         <div className="mt-14 border-t border-border pt-12">
           <div className="max-w-4xl">
             <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">
-              Professional Profile
+              Profile
             </p>
             <h3 className="mt-3 max-w-3xl text-2xl leading-tight text-foreground md:text-3xl">
               Junior Software Developer, Graphic Designer, and Security Awareness Specialist
             </h3>
             <p className="mt-5 max-w-4xl text-base leading-8 text-muted-foreground md:text-lg">
-              My work combines technical development, thoughtful design, and practical digital
-              awareness. I aim to create solutions that are easy to use, visually clear, and built
-              with care for both user experience and reliability.
+              My work combines software development, design, and security awareness. I focus on
+              creating solutions that are easy to use, visually clear, and built with attention to
+              reliability and user needs.
             </p>
           </div>
 
