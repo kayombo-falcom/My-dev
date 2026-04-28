@@ -22,7 +22,7 @@ export function Hero() {
 
             <div className="mt-12 border-t border-border pt-10">
               <div className="flex items-start gap-4">
-                <span className="mt-2 h-10 w-1.5 bg-[#56b98b]" />
+                <span className="mt-2 h-10 w-1.5 rounded-full bg-[linear-gradient(180deg,#dfbe9e_0%,#8b5e3c_48%,#14213d_100%)]" />
                 <div className="max-w-3xl">
                   <h3 className="text-3xl font-semibold text-foreground md:text-4xl">What I do</h3>
                   <p className="mt-4 text-base leading-8 text-muted-foreground md:text-lg">

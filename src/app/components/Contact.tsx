@@ -22,7 +22,7 @@ export function Contact() {
           <div>
             <div className="max-w-3xl">
               <div className="flex items-start gap-4">
-                <span className="mt-2 h-12 w-1.5 bg-[#56b98b]" />
+                <span className="mt-2 h-12 w-1.5 bg-[#e2b48c]" />
                 <div>
                   <h2 className="text-4xl font-semibold text-foreground md:text-5xl">
                     Reach Me

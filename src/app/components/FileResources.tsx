@@ -35,7 +35,7 @@ export function FileResources() {
       <div className="mx-auto max-w-[1600px]">
         <div className="max-w-4xl">
           <div className="flex items-start gap-4">
-            <span className="mt-2 h-12 w-1.5 bg-[#56b98b]" />
+            <span className="mt-2 h-12 w-1.5 bg-[#e2b48c]" />
             <div>
               <h2 className="text-4xl font-semibold text-foreground md:text-5xl">Resources</h2>
               <p className="mt-5 text-base leading-8 text-muted-foreground md:text-lg">
