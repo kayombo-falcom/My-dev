@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router';
 import { BriefcaseBusiness, Home, Mail, UserRound } from 'lucide-react';
-import profilePhoto from '../../assets/kayombo03.png';
+import sidebarLogo from '../../assets/sidebar-logo.svg';
 import { ThemeToggle } from './ThemeToggle';
 
 const quickNavItems = [
@@ -18,11 +18,11 @@ export function HomeSidebar() {
           <p className="text-center text-xl font-semibold leading-tight tracking-tight md:text-[1.65rem]">
             HIRORIMS KAYOMBO
           </p>
-          <div className="mx-auto mt-6 h-36 w-36 overflow-hidden rounded-full border-4 border-white/35 bg-white/15 shadow-[0_18px_40px_rgba(10,30,24,0.22)] md:h-40 md:w-40">
+          <div className="mx-auto mt-6 flex w-full max-w-[14.5rem] items-center justify-center rounded-[1.75rem] border border-white/18 bg-white/12 px-5 py-4 backdrop-blur-sm shadow-[0_14px_32px_rgba(8,26,20,0.18)] md:max-w-[16rem] md:px-6 md:py-5">
             <img
-              src={profilePhoto}
-              alt="HIRORIMS KAYOMBO"
-              className="h-full w-full object-cover object-top"
+              src={sidebarLogo}
+              alt="HIRORIMS KAYOMBO logo"
+              className="max-h-24 w-full object-contain md:max-h-28"
             />
           </div>
           <p className="mt-6 text-center text-sm leading-7 text-white/90 md:text-[0.96rem]">
