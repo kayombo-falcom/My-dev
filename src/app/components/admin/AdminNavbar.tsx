@@ -1,5 +1,5 @@
 import { User } from 'lucide-react';
-import { ThemeToggle } from '../components/ThemeToggle';
+import { ThemeToggle } from '../layout/ThemeToggle';
 
 export function AdminNavbar() {
   return (

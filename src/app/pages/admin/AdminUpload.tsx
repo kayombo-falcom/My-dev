@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { Upload as UploadIcon, File, X } from 'lucide-react';
-import { useFiles } from '../context/FileContext';
+import { useFiles } from '../../context/FileContext';
 
 export function AdminUpload() {
   const { addFile } = useFiles();

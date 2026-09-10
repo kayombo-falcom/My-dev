@@ -1,14 +1,14 @@
 import { createBrowserRouter } from 'react-router';
-import { AdminLayout } from './pages/AdminLayout';
-import { AdminDashboard } from './pages/AdminDashboard';
-import { AdminUpload } from './pages/AdminUpload';
-import { AdminFiles } from './pages/AdminFiles';
-import { AdminSettings } from './pages/AdminSettings';
-import { PublicLayout } from './pages/PublicLayout';
-import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { ProjectsPage } from './pages/ProjectsPage';
-import { ReachMePage } from './pages/ReachMePage';
+import { AdminLayout } from './pages/admin/AdminLayout';
+import { AdminDashboard } from './pages/admin/AdminDashboard';
+import { AdminUpload } from './pages/admin/AdminUpload';
+import { AdminFiles } from './pages/admin/AdminFiles';
+import { AdminSettings } from './pages/admin/AdminSettings';
+import { PublicLayout } from './pages/public/PublicLayout';
+import { HomePage } from './pages/public/HomePage';
+import { AboutPage } from './pages/public/AboutPage';
+import { ProjectsPage } from './pages/public/ProjectsPage';
+import { ReachMePage } from './pages/public/ReachMePage';
 
 export const router = createBrowserRouter([
   {

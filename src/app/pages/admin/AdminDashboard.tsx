@@ -1,5 +1,5 @@
 import { FolderOpen, Palette, FileArchive, TrendingUp } from 'lucide-react';
-import { useFiles } from '../context/FileContext';
+import { useFiles } from '../../context/FileContext';
 
 export function AdminDashboard() {
   const { files } = useFiles();

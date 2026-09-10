@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Download, Eye, Trash2, FileImage, FileText, FileArchive } from 'lucide-react';
-import { useFiles } from '../context/FileContext';
+import { useFiles } from '../../context/FileContext';
 
 export function AdminFiles() {
   const { files, deleteFile } = useFiles();

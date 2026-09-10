@@ -1,11 +1,9 @@
-import { Projects } from '../components/Projects';
-import { FileResources } from '../components/FileResources';
+import { Projects } from '../../components/sections/Projects';
 
 export function ProjectsPage() {
   return (
     <div className="min-h-screen">
       <Projects />
-      <FileResources />
     </div>
   );
 }

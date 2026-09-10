@@ -1,5 +1,4 @@
 import {
-  BriefcaseBusiness,
   GraduationCap,
   Hammer,
   Lightbulb,
@@ -20,6 +19,7 @@ import {
   SiTypescript,
 } from 'react-icons/si';
 import { TbApi, TbBrandAdobeIllustrator, TbBrandAdobePhotoshop } from 'react-icons/tb';
+import { Reveal, RevealGroup, RevealItem } from '../motion/Reveal';
 
 const education = [
   {
@@ -186,12 +186,19 @@ const goals = [
   'I aim to continuously improve my skills, write clean and maintainable code, and contribute to meaningful projects. I am committed to delivering quality work and growing in my career.',
 ];
 
+const toneClasses = {
+  primary: 'bg-primary/10 text-primary',
+  secondary: 'bg-secondary/10 text-secondary',
+  accent: 'bg-accent/10 text-accent',
+};
+
 const sectionCards = [
   {
     title: 'Education',
     description:
       'Academic and practical training that supports my work in cyber security and software development.',
     icon: GraduationCap,
+    tone: 'primary' as const,
     content: (
       <div className="space-y-4">
         {education.map(({ institute, program, studied }) => (
@@ -222,6 +229,7 @@ const sectionCards = [
     title: 'Skills',
     description: 'Core abilities applied across development, design, and communication.',
     icon: Lightbulb,
+    tone: 'secondary' as const,
     content: (
       <div className="grid gap-4 sm:grid-cols-2">
         {skills.map(({ title, description }) => (
@@ -237,6 +245,7 @@ const sectionCards = [
     title: 'Tools',
     description: 'Common tools and technologies used to design, build, and refine digital work.',
     icon: Hammer,
+    tone: 'accent' as const,
     content: (
       <div className="grid gap-4 sm:grid-cols-2">
         {tools.map(({ name, description, icon: Icon }) => (
@@ -256,27 +265,10 @@ const sectionCards = [
     ),
   },
   {
-    title: 'Experience',
-    description: 'Key roles and contributions across software development, design, and IT support.',
-    icon: BriefcaseBusiness,
-    content: (
-      <div className="space-y-4">
-        {experiences.map(({ title, organization, period, description }) => (
-          <div key={title} className="rounded-2xl border border-border bg-card/70 p-5">
-            <h4 className="text-base text-foreground">{title}</h4>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {organization} ({period})
-            </p>
-            <p className="mt-2 text-sm leading-7 text-muted-foreground">{description}</p>
-          </div>
-        ))}
-      </div>
-    ),
-  },
-  {
     title: 'Goals',
     description: 'The direction I am continuing to build toward in my career and work.',
     icon: Target,
+    tone: 'primary' as const,
     content: (
       <ul className="space-y-3">
         {goals.map((goal) => (
@@ -294,61 +286,85 @@ const sectionCards = [
 
 export function About() {
   return (
-    <section id="about" className="bg-background px-6 py-16 md:px-8 md:py-20">
+    <section id="about" className="bg-background px-6 py-12 md:px-8 md:py-16">
       <div className="mx-auto max-w-[1600px]">
-        <div className="max-w-4xl">
-          <div className="flex items-start gap-4">
-            <span className="mt-2 h-12 w-1.5 bg-[#e2b48c]" />
-            <div>
-              <h2 className="text-4xl font-semibold text-foreground md:text-5xl">About Me</h2>
-              <p className="mt-5 text-base leading-8 text-muted-foreground md:text-lg">
-                Building digital solutions that are clear, useful, and reliable.
-              </p>
-              <p className="mt-4 max-w-3xl text-base leading-8 text-muted-foreground md:text-lg">
-                I work across software development, design, and security awareness to create
-                clear digital experiences that function reliably and serve users effectively.
+        <Reveal>
+          <div className="max-w-4xl">
+            <div className="flex items-start gap-4">
+              <span className="accent-bar mt-2 h-12 w-1.5 rounded-full" />
+              <div>
+                <h2 className="text-4xl font-semibold text-foreground md:text-5xl">About Me</h2>
+                <p className="mt-5 text-base leading-8 text-muted-foreground md:text-lg">
+                  Building digital solutions that are clear, useful, and reliable.
+                </p>
+                <p className="mt-4 max-w-3xl text-base leading-8 text-muted-foreground md:text-lg">
+                  I work across software development, design, and security awareness to create
+                  clear digital experiences that function reliably and serve users effectively.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.08}>
+          <div className="mt-10 border-t border-border pt-10">
+            <div className="max-w-4xl">
+              <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Profile</p>
+              <h3 className="mt-3 max-w-3xl text-2xl leading-tight text-foreground md:text-3xl">
+                Software Developer, Graphic Designer, and Security Awareness Specialist
+              </h3>
+              <p className="mt-5 max-w-4xl text-base leading-8 text-muted-foreground md:text-lg">
+                My work combines software development, design, and security awareness. I focus on
+                creating solutions that are easy to use, visually clear, and built with attention
+                to reliability and user needs.
               </p>
             </div>
           </div>
+        </Reveal>
+
+        <div className="mt-10 border-t border-border pt-10">
+          <Reveal>
+            <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Experience</p>
+            <h3 className="mt-3 text-2xl text-foreground md:text-3xl">
+              Key roles across development, design, and IT support.
+            </h3>
+          </Reveal>
+
+          <RevealGroup className="relative mt-10 max-w-3xl space-y-8 border-l border-border pl-8">
+            {experiences.map(({ title, organization, period, description }) => (
+              <RevealItem key={title} className="relative">
+                <span className="absolute top-1.5 -left-[2.35rem] h-3 w-3 rounded-full border-2 border-background bg-primary" />
+                <p className="text-xs uppercase tracking-[0.2em] text-primary">{period}</p>
+                <h4 className="mt-2 text-lg text-foreground">{title}</h4>
+                <p className="mt-1 text-sm text-muted-foreground">{organization}</p>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{description}</p>
+              </RevealItem>
+            ))}
+          </RevealGroup>
         </div>
 
-        <div className="mt-14 border-t border-border pt-12">
-          <div className="max-w-4xl">
-            <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">
-              Profile
-            </p>
-            <h3 className="mt-3 max-w-3xl text-2xl leading-tight text-foreground md:text-3xl">
-              Junior Software Developer, Graphic Designer, and Security Awareness Specialist
-            </h3>
-            <p className="mt-5 max-w-4xl text-base leading-8 text-muted-foreground md:text-lg">
-              My work combines software development, design, and security awareness. I focus on
-              creating solutions that are easy to use, visually clear, and built with attention to
-              reliability and user needs.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 xl:grid-cols-2">
-            {sectionCards.map(({ title, description, icon: Icon, content }) => (
-              <article
-                key={title}
-                className="glass-panel rounded-[28px] border border-border px-6 py-6 md:px-7"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="rounded-2xl bg-primary/10 p-3 text-primary">
-                    <Icon className="h-5 w-5" />
+        <div className="mt-10 border-t border-border pt-10">
+          <RevealGroup className="grid gap-6 xl:grid-cols-2">
+            {sectionCards.map(({ title, description, icon: Icon, content, tone }) => (
+              <RevealItem key={title}>
+                <article className="glass-panel h-full rounded-[28px] border border-border px-6 py-6 md:px-7">
+                  <div className="flex items-start gap-4">
+                    <div className={`rounded-2xl p-3 ${toneClasses[tone]}`}>
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">
+                        {title}
+                      </p>
+                      <p className="mt-2 text-sm leading-7 text-muted-foreground">{description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">
-                      {title}
-                    </p>
-                    <p className="mt-2 text-sm leading-7 text-muted-foreground">{description}</p>
-                  </div>
-                </div>
 
-                <div className="mt-6">{content}</div>
-              </article>
+                  <div className="mt-6">{content}</div>
+                </article>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </div>
       </div>
     </section>

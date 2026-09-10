@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router';
 import { LayoutDashboard, FolderOpen, Palette, Upload, Settings, LogOut } from 'lucide-react';
-import { ThemeToggle } from '../components/ThemeToggle';
+import { ThemeToggle } from '../layout/ThemeToggle';
 
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/admin' },
