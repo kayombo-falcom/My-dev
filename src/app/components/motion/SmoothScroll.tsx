@@ -10,15 +10,31 @@ export function SmoothScroll() {
       touchMultiplier: 1.1,
     });
 
-    let frameId: number;
+    let frameId: number | null = null;
     function raf(time: number) {
       lenis.raf(time);
       frameId = requestAnimationFrame(raf);
     }
+
+    function handleVisibilityChange() {
+      if (document.hidden) {
+        if (frameId !== null) {
+          cancelAnimationFrame(frameId);
+          frameId = null;
+        }
+      } else if (frameId === null) {
+        frameId = requestAnimationFrame(raf);
+      }
+    }
+
     frameId = requestAnimationFrame(raf);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
-      cancelAnimationFrame(frameId);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      if (frameId !== null) {
+        cancelAnimationFrame(frameId);
+      }
       lenis.destroy();
     };
   }, []);

@@ -87,7 +87,7 @@ export function Hero() {
                 <img
                   src={profilePhoto}
                   alt="HIRORIMS KAYOMBO"
-                  className="aspect-[4/3] w-full object-cover object-top"
+                  className="aspect-[4/3] max-h-[420px] w-full object-cover object-[center_15%]"
                 />
               </div>
             </div>

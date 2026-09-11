@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { Mail, MessageSquare, Send, User as UserIcon } from 'lucide-react';
+import { toast } from 'sonner';
 import { Reveal } from '../motion/Reveal';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
+
+const CONTACT_EMAIL = 'hirorimskayombo@gmail.com';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -15,8 +18,16 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Message sent! (This is a demo)');
+
+    const subject = `Portfolio inquiry from ${formData.name}`;
+    const body = `${formData.message}\n\n— ${formData.name} (${formData.email})`;
+    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    const link = document.createElement('a');
+    link.href = mailtoUrl;
+    link.click();
+
+    toast.success('Opening your email app to send this message.');
     setFormData({ name: '', email: '', message: '' });
   };
 

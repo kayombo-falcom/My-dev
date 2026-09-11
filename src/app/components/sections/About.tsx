@@ -192,97 +192,29 @@ const toneClasses = {
   accent: 'bg-accent/10 text-accent',
 };
 
-const sectionCards = [
-  {
-    title: 'Education',
-    description:
-      'Academic and practical training that supports my work in cyber security and software development.',
-    icon: GraduationCap,
-    tone: 'primary' as const,
-    content: (
-      <div className="space-y-4">
-        {education.map(({ institute, program, studied }) => (
-          <div key={program} className="rounded-2xl border border-border bg-card/70 p-5">
-            <p className="text-xs uppercase tracking-[0.18em] text-primary">{institute}</p>
-            <h4 className="mt-2 text-base text-foreground">{program}</h4>
-            <p className="mt-2 text-sm leading-7 text-muted-foreground">{studied}</p>
-          </div>
-        ))}
-
-        <div className="rounded-2xl border border-border bg-card/70 p-5">
-          <p className="text-xs uppercase tracking-[0.18em] text-primary">Certificates</p>
-          <ul className="mt-3 space-y-2">
-            {certificates.map((certificate) => (
-              <li
-                key={certificate}
-                className="rounded-xl bg-background/70 px-4 py-3 text-sm text-muted-foreground"
-              >
-                {certificate}
-              </li>
-            ))}
-          </ul>
-        </div>
+function CardHeading({
+  icon: Icon,
+  tone,
+  title,
+  description,
+}: {
+  icon: IconType | typeof GraduationCap;
+  tone: keyof typeof toneClasses;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="flex items-start gap-4">
+      <div className={`rounded-2xl p-3 ${toneClasses[tone]}`}>
+        <Icon className="h-5 w-5" />
       </div>
-    ),
-  },
-  {
-    title: 'Skills',
-    description: 'Core abilities applied across development, design, and communication.',
-    icon: Lightbulb,
-    tone: 'secondary' as const,
-    content: (
-      <div className="grid gap-4 sm:grid-cols-2">
-        {skills.map(({ title, description }) => (
-          <div key={title} className="rounded-2xl border border-border bg-card/70 p-5">
-            <h4 className="text-sm text-foreground">{title}</h4>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
-          </div>
-        ))}
+      <div>
+        <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">{title}</p>
+        <p className="mt-2 text-sm leading-7 text-muted-foreground">{description}</p>
       </div>
-    ),
-  },
-  {
-    title: 'Tools',
-    description: 'Common tools and technologies used to design, build, and refine digital work.',
-    icon: Hammer,
-    tone: 'accent' as const,
-    content: (
-      <div className="grid gap-4 sm:grid-cols-2">
-        {tools.map(({ name, description, icon: Icon }) => (
-          <div key={name} className="rounded-2xl border border-border bg-card/70 p-4">
-            <div className="flex items-start gap-3">
-              <div className="rounded-xl bg-primary/10 p-2 text-primary">
-                <Icon className="h-4.5 w-4.5" />
-              </div>
-              <div>
-                <h4 className="text-sm text-foreground">{name}</h4>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    ),
-  },
-  {
-    title: 'Goals',
-    description: 'The direction I am continuing to build toward in my career and work.',
-    icon: Target,
-    tone: 'primary' as const,
-    content: (
-      <ul className="space-y-3">
-        {goals.map((goal) => (
-          <li
-            key={goal}
-            className="rounded-2xl border border-border bg-card/70 px-5 py-4 text-sm leading-7 text-muted-foreground"
-          >
-            {goal}
-          </li>
-        ))}
-      </ul>
-    ),
-  },
-];
+    </div>
+  );
+}
 
 export function About() {
   return (
@@ -332,7 +264,7 @@ export function About() {
 
           <RevealGroup className="relative mt-10 max-w-3xl space-y-8 border-l border-border pl-8">
             {experiences.map(({ title, organization, period, description }) => (
-              <RevealItem key={title} className="relative">
+              <RevealItem key={`${title}-${organization}-${period}`} className="relative">
                 <span className="absolute top-1.5 -left-[2.35rem] h-3 w-3 rounded-full border-2 border-background bg-primary" />
                 <p className="text-xs uppercase tracking-[0.2em] text-primary">{period}</p>
                 <h4 className="mt-2 text-lg text-foreground">{title}</h4>
@@ -344,27 +276,110 @@ export function About() {
         </div>
 
         <div className="mt-10 border-t border-border pt-10">
-          <RevealGroup className="grid gap-6 xl:grid-cols-2">
-            {sectionCards.map(({ title, description, icon: Icon, content, tone }) => (
-              <RevealItem key={title}>
-                <article className="glass-panel h-full rounded-[28px] border border-border px-6 py-6 md:px-7">
-                  <div className="flex items-start gap-4">
-                    <div className={`rounded-2xl p-3 ${toneClasses[tone]}`}>
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">
-                        {title}
-                      </p>
-                      <p className="mt-2 text-sm leading-7 text-muted-foreground">{description}</p>
-                    </div>
-                  </div>
+          <RevealGroup className="grid gap-6 lg:grid-cols-2">
+            <RevealItem>
+              <article className="glass-panel h-full rounded-[28px] border border-border px-6 py-6 md:px-7">
+                <CardHeading
+                  icon={GraduationCap}
+                  tone="primary"
+                  title="Education"
+                  description="Academic and practical training that supports my work in cyber security and software development."
+                />
 
-                  <div className="mt-6">{content}</div>
-                </article>
-              </RevealItem>
-            ))}
+                <div className="mt-6 space-y-4">
+                  {education.map(({ institute, program, studied }) => (
+                    <div key={program} className="rounded-2xl border border-border bg-card/70 p-5">
+                      <p className="text-xs uppercase tracking-[0.18em] text-primary">{institute}</p>
+                      <h4 className="mt-2 text-base text-foreground">{program}</h4>
+                      <p className="mt-2 text-sm leading-7 text-muted-foreground">{studied}</p>
+                    </div>
+                  ))}
+
+                  <div className="rounded-2xl border border-border bg-card/70 p-5">
+                    <p className="text-xs uppercase tracking-[0.18em] text-primary">Certificates</p>
+                    <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                      {certificates.map((certificate) => (
+                        <li
+                          key={certificate}
+                          className="rounded-xl bg-background/70 px-4 py-3 text-sm text-muted-foreground"
+                        >
+                          {certificate}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </RevealItem>
+
+            <RevealItem>
+              <article className="glass-panel h-full rounded-[28px] border border-border px-6 py-6 md:px-7">
+                <CardHeading
+                  icon={Lightbulb}
+                  tone="secondary"
+                  title="Skills"
+                  description="Core abilities applied across development, design, and communication."
+                />
+
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {skills.map(({ title, description }) => (
+                    <div key={title} className="rounded-2xl border border-border bg-card/70 p-5">
+                      <h4 className="text-sm text-foreground">{title}</h4>
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            </RevealItem>
           </RevealGroup>
+
+          <Reveal delay={0.06} className="mt-6">
+            <article className="glass-panel rounded-[28px] border border-border px-6 py-6 md:px-7">
+              <CardHeading
+                icon={Hammer}
+                tone="accent"
+                title="Tools"
+                description="Common tools and technologies used to design, build, and refine digital work."
+              />
+
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                {tools.map(({ name, description, icon: Icon }) => (
+                  <div
+                    key={name}
+                    title={description}
+                    className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card/70 px-3 py-4 text-center transition-colors hover:border-primary/30"
+                  >
+                    <div className="rounded-xl bg-primary/10 p-2 text-primary">
+                      <Icon className="h-4.5 w-4.5" />
+                    </div>
+                    <span className="text-xs text-foreground">{name}</span>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </Reveal>
+
+          <Reveal delay={0.1} className="mt-6">
+            <article className="glass-panel rounded-[28px] border border-border px-6 py-6 md:px-7">
+              <CardHeading
+                icon={Target}
+                tone="primary"
+                title="Goals"
+                description="The direction I am continuing to build toward in my career and work."
+              />
+
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                {goals.map((goal) => (
+                  <p
+                    key={goal}
+                    className="rounded-2xl border border-border bg-card/70 px-5 py-4 text-sm leading-7 text-muted-foreground"
+                  >
+                    {goal}
+                  </p>
+                ))}
+              </div>
+            </article>
+          </Reveal>
         </div>
       </div>
     </section>
