@@ -1,5 +1,5 @@
 import { Eye, ExternalLink, Github } from 'lucide-react';
-import { developmentProjects, designProjects, type DevProject, type DesignProject } from '../../data/projects';
+import { developmentProjects, type DevProject, type DesignProject } from '../../data/projects';
 import { Reveal, RevealGroup, RevealItem } from '../motion/Reveal';
 import { ArtworkSlideshow } from './ArtworkSlideshow';
 import { Badge } from '../ui/badge';
@@ -106,26 +106,11 @@ export function Projects() {
             <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
               Graphic Design
             </h3>
-          </Reveal>
-          <RevealGroup className="mt-6 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {designProjects.map((project) => (
-              <RevealItem key={project.id}>
-                <ProjectCard project={project} />
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </div>
-
-        <div className="mt-16 border-t border-border pt-12">
-          <Reveal>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
-              Poster &amp; Artwork
-            </h3>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground">
               A closer look at poster and artwork design work.
             </p>
           </Reveal>
-          <Reveal delay={0.06} className="mt-6 max-w-2xl">
+          <Reveal delay={0.06} className="mt-6">
             <ArtworkSlideshow />
           </Reveal>
         </div>
