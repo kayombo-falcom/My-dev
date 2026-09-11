@@ -1,6 +1,7 @@
 import { Eye, ExternalLink, Github } from 'lucide-react';
 import { developmentProjects, designProjects, type DevProject, type DesignProject } from '../../data/projects';
 import { Reveal, RevealGroup, RevealItem } from '../motion/Reveal';
+import { ArtworkSlideshow } from './ArtworkSlideshow';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 
@@ -67,7 +68,7 @@ function ProjectCard({ project }: { project: DevProject | DesignProject }) {
 
 export function Projects() {
   return (
-    <section id="projects" className="bg-background px-6 py-12 md:px-8 md:py-16">
+    <section id="projects" className="bg-background px-6 py-12 md:px-10 md:py-16 lg:px-16 xl:px-20">
       <div className="mx-auto max-w-[1600px]">
         <Reveal>
           <div className="max-w-4xl">
@@ -113,6 +114,20 @@ export function Projects() {
               </RevealItem>
             ))}
           </RevealGroup>
+        </div>
+
+        <div className="mt-16 border-t border-border pt-12">
+          <Reveal>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
+              Poster &amp; Artwork
+            </h3>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground">
+              A closer look at poster and artwork design work.
+            </p>
+          </Reveal>
+          <Reveal delay={0.06} className="mt-6 max-w-2xl">
+            <ArtworkSlideshow />
+          </Reveal>
         </div>
       </div>
     </section>
