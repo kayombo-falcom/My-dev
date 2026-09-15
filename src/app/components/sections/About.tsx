@@ -22,7 +22,7 @@ import {
   SiTailwindcss,
   SiTypescript,
 } from 'react-icons/si';
-import { TbApi, TbBrandAdobeIllustrator, TbBrandAdobePhotoshop } from 'react-icons/tb';
+import { TbApi } from 'react-icons/tb';
 import { Reveal, RevealGroup, RevealItem } from '../motion/Reveal';
 import { toneClasses, type Tone } from '../../lib/tone';
 
@@ -131,16 +131,6 @@ const tools = [
     description: 'Used for interface planning, wireframes, and design collaboration.',
     icon: SiFigma,
   },
-  {
-    name: 'Adobe Photoshop',
-    description: 'Used for image editing and digital graphic production.',
-    icon: TbBrandAdobePhotoshop,
-  },
-  {
-    name: 'Adobe Illustrator',
-    description: 'Used for vector design, logos, and brand graphics.',
-    icon: TbBrandAdobeIllustrator,
-  },
   { name: 'Git', description: 'Supports version control and structured project workflows.', icon: SiGit },
   {
     name: 'GitHub',
@@ -208,7 +198,7 @@ function CardHeading({
       <div className={`rounded-2xl p-3 ${toneClasses[tone]}`}>
         <Icon className="h-5 w-5" />
       </div>
-      <div>
+      <div className="min-w-0 flex-1">
         <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">{title}</p>
         <p className="mt-2 text-sm leading-7 text-muted-foreground">{description}</p>
       </div>
@@ -298,18 +288,18 @@ export function About() {
 
         <Reveal delay={0.08}>
           <div className="mt-10 border-t border-border pt-10">
-            <div className="max-w-5xl">
+            <div className="max-w-6xl">
               <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Profile</p>
               <h3 className="mt-3 text-2xl leading-tight text-foreground md:text-3xl">
                 Software Developer, Graphic Designer, and Security Awareness Specialist
               </h3>
-              <p className="mt-5 text-base leading-8 text-muted-foreground md:text-lg">
+              <p className="mt-5 text-pretty text-base leading-8 text-muted-foreground md:text-lg">
                 I combine full-stack development, visual design, and cybersecurity to build
                 digital solutions that are functional, intuitive, and secure. I work across both
                 frontend and backend development, with a strong focus on clean architecture,
                 performance, usability, and responsive design.
               </p>
-              <p className="mt-4 text-base leading-8 text-muted-foreground md:text-lg">
+              <p className="mt-4 text-pretty text-base leading-8 text-muted-foreground md:text-lg">
                 I also apply visual and UI/UX principles to create interfaces that are modern,
                 consistent, and easy to navigate. With a cybersecurity mindset, I consider
                 security and best practices throughout the development process, helping create

@@ -20,7 +20,7 @@ const focusAreas = [
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="grid gap-10 px-6 py-10 md:px-10 md:py-12 xl:grid-cols-[minmax(0,1.05fr)_minmax(20rem,0.95fr)] xl:items-center xl:gap-12 xl:px-14 xl:py-14">
+      <div className="grid gap-10 px-6 py-10 md:px-10 md:py-12 lg:px-16 xl:grid-cols-[minmax(0,1.05fr)_minmax(20rem,0.95fr)] xl:items-center xl:gap-12 xl:px-20 xl:py-14">
         <div className="max-w-3xl">
           <Reveal>
             <AvailabilityBadge />

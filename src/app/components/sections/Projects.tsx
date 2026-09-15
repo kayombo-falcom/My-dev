@@ -23,7 +23,7 @@ export function Projects() {
           </div>
         </Reveal>
 
-        <div className="mt-12">
+        <div id="software-development" className="mt-12 scroll-mt-24">
           <Reveal>
             <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
               Software Development
@@ -38,7 +38,7 @@ export function Projects() {
           </RevealGroup>
         </div>
 
-        <div className="mt-16 border-t border-border pt-12">
+        <div id="graphic-design" className="mt-16 scroll-mt-24 border-t border-border pt-12">
           <Reveal>
             <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
               Graphic Design
