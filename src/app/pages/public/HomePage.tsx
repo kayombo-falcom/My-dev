@@ -6,7 +6,7 @@ import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 import { developmentProjects, getProjectTags } from '../../data/projects';
 import { toneClasses } from '../../lib/tone';
-import graphicDesignPreview from '../../../assets/posters/cyber-monday.jpg';
+import graphicDesignPreview from '../../../assets/posters/hy-sep26-1b.png';
 
 const graphicDesignDisciplines = ['Logo Design', 'Posters', 'Banners', 'Icons', 'UI/UX'];
 

@@ -1,12 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import worldSmileDay from '../../../assets/posters/world-smile-day.jpg';
-import homeQuarantinePlaylist from '../../../assets/posters/home-quarantine-playlist.jpg';
-import exploreYourTrip from '../../../assets/posters/explore-your-trip.jpg';
-import cityParkEvent from '../../../assets/posters/city-park-event.jpg';
-import createWithClay from '../../../assets/posters/create-with-clay.jpg';
-import cyberMonday from '../../../assets/posters/cyber-monday.jpg';
+import easter2026 from '../../../assets/posters/easter2026.png';
+import harusIcon04 from '../../../assets/posters/harus.icon-04.png';
+import harusIcon from '../../../assets/posters/harus.icon.png';
+import harusiYetuLogoMockup from '../../../assets/posters/harusi-yetu-logo-mockup.png';
+import harusiyetu02 from '../../../assets/posters/harusiyetu02.png';
+import hySep26 from '../../../assets/posters/hy-sep26-1b.png';
+import knowledgeHub1 from '../../../assets/posters/knowledge-hub-phz000011.png';
+import knowledgeHub2 from '../../../assets/posters/knowledge-hub-phz10.png';
+import meiMos from '../../../assets/posters/mei-mos.png';
+import parokia from '../../../assets/posters/parokia.1.png';
+import phina from '../../../assets/posters/phina.png';
+import qgsh002 from '../../../assets/posters/qgsh-002.png';
+import qgsh1 from '../../../assets/posters/qgsh-1.png';
+import quote1 from '../../../assets/posters/quote-1.png';
 
 type ArtworkSlide = {
   src: string;
@@ -14,12 +22,20 @@ type ArtworkSlide = {
 };
 
 const artworkSlides: ArtworkSlide[] = [
-  { src: worldSmileDay, title: 'World Smile Day' },
-  { src: homeQuarantinePlaylist, title: 'Home Quarantine Playlist' },
-  { src: exploreYourTrip, title: 'Explore Your Trip' },
-  { src: cityParkEvent, title: 'City Park Event' },
-  { src: createWithClay, title: 'Create With Clay' },
-  { src: cyberMonday, title: 'Cyber Monday' },
+  { src: hySep26, title: 'Harusi Yetu — September 26' },
+  { src: meiMos, title: 'Mei Mos' },
+  { src: easter2026, title: 'Easter 2026' },
+  { src: harusIcon04, title: 'Harus Icon' },
+  { src: harusIcon, title: 'Harus Icon Alt' },
+  { src: harusiYetuLogoMockup, title: 'Harusi Yetu Logo Mockup' },
+  { src: harusiyetu02, title: 'Harusi Yetu' },
+  { src: knowledgeHub1, title: 'Knowledge Hub' },
+  { src: knowledgeHub2, title: 'Knowledge Hub Alt' },
+  { src: parokia, title: 'Parokia' },
+  { src: phina, title: 'Phina' },
+  { src: qgsh002, title: 'QGSH' },
+  { src: qgsh1, title: 'QGSH Alt' },
+  { src: quote1, title: 'Quote' },
 ];
 
 const REAL_LENGTH = artworkSlides.length;
