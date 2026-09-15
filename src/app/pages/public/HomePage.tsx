@@ -6,7 +6,7 @@ import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 import { developmentProjects, getProjectTags } from '../../data/projects';
 import { toneClasses } from '../../lib/tone';
-import graphicDesignPreview from '../../../assets/posters/hy-sep26-1b.png';
+import graphicDesignPreview from '../../../assets/posters/hy-sep26-1b.jpg';
 
 const graphicDesignDisciplines = ['Logo Design', 'Posters', 'Banners', 'Icons', 'UI/UX'];
 
@@ -14,6 +14,7 @@ function FeaturedCard({
   href,
   image,
   imageAlt,
+  imageBackground,
   label,
   labelToneClass,
   title,
@@ -24,6 +25,7 @@ function FeaturedCard({
   href: string;
   image: string;
   imageAlt: string;
+  imageBackground?: 'white';
   label: string;
   labelToneClass: string;
   title: string;
@@ -31,13 +33,25 @@ function FeaturedCard({
   tags: string[];
   tagToneClass: string;
 }) {
+  const isWhiteBackground = imageBackground === 'white';
+
   return (
     <Link to={href} className="project-card group">
-      <div className="relative aspect-video overflow-hidden bg-muted">
+      <div className={`relative aspect-video overflow-hidden ${isWhiteBackground ? 'bg-white' : 'bg-muted'}`}>
+        {!isWhiteBackground && (
+          <img
+            src={image}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-2xl"
+          />
+        )}
         <img
           src={image}
           alt={imageAlt}
-          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
+          className={`relative h-full w-full object-contain transition-transform duration-500 group-hover:scale-110 ${
+            isWhiteBackground ? 'p-10' : ''
+          }`}
         />
       </div>
       <div className="p-6">
@@ -61,7 +75,7 @@ function FeaturedCard({
 }
 
 export function HomePage() {
-  const featuredDevProject = developmentProjects[0];
+  const featuredDevProject = developmentProjects.find((project) => project.title === 'NetWatch') ?? developmentProjects[0];
 
   return (
     <div className="bg-background">
@@ -97,6 +111,7 @@ export function HomePage() {
               href="/projects#software-development"
               image={featuredDevProject.image}
               imageAlt={featuredDevProject.title}
+              imageBackground={featuredDevProject.imageBackground}
               label="Software Development"
               labelToneClass="text-primary"
               title={featuredDevProject.title}
