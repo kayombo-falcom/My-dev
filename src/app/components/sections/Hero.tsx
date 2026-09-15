@@ -5,6 +5,7 @@ import profilePhoto from '../../../assets/kayombo03.png';
 import { Reveal, RevealGroup, RevealItem } from '../motion/Reveal';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
+import { toneClasses } from '../../lib/tone';
 
 const focusAreas = [
   { label: 'React', tone: 'primary' },
@@ -14,12 +15,6 @@ const focusAreas = [
   { label: 'Tailwind CSS', tone: 'secondary' },
   { label: 'Figma', tone: 'accent' },
 ] as const;
-
-const toneClasses = {
-  primary: 'bg-primary/10 text-primary',
-  secondary: 'bg-secondary/10 text-secondary',
-  accent: 'bg-accent/10 text-accent',
-};
 
 export function Hero() {
   return (
@@ -80,16 +75,13 @@ export function Hero() {
         </div>
 
         <Reveal delay={0.15} y={26}>
-          <div className="relative">
-            <div className="hero-portrait-glow absolute -inset-4 rounded-[2rem] opacity-70" />
-            <div className="relative rounded-3xl bg-card p-3 shadow-[0_30px_80px_rgba(19,18,38,0.2)]">
-              <div className="overflow-hidden rounded-2xl bg-muted">
-                <img
-                  src={profilePhoto}
-                  alt="HIRORIMS KAYOMBO"
-                  className="aspect-[4/3] max-h-[420px] w-full object-cover object-[center_15%]"
-                />
-              </div>
+          <div className="relative mx-auto max-w-sm xl:mx-0">
+            <div className="overflow-hidden rounded-2xl bg-muted shadow-[0_30px_80px_rgba(19,18,38,0.2)]">
+              <img
+                src={profilePhoto}
+                alt="HIRORIMS KAYOMBO"
+                className="aspect-[4/3] max-h-[280px] w-full object-cover object-[center_15%]"
+              />
             </div>
           </div>
         </Reveal>

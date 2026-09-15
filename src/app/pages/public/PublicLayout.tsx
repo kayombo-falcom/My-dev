@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router';
 import { Header } from '../../components/layout/Header';
 import { Footer } from '../../components/layout/Footer';
-import { Toaster } from '../../components/ui/sonner';
 
 export function PublicLayout() {
   return (
@@ -11,7 +10,6 @@ export function PublicLayout() {
         <Outlet />
       </main>
       <Footer />
-      <Toaster />
     </div>
   );
 }

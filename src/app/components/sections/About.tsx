@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   GraduationCap,
   Hammer,
@@ -22,6 +23,7 @@ import {
 } from 'react-icons/si';
 import { TbApi, TbBrandAdobeIllustrator, TbBrandAdobePhotoshop } from 'react-icons/tb';
 import { Reveal, RevealGroup, RevealItem } from '../motion/Reveal';
+import { toneClasses, type Tone } from '../../lib/tone';
 
 const education = [
   {
@@ -189,12 +191,6 @@ const goals = [
   'To keep growing as a developer by writing clean, maintainable code and contributing to projects that create real value for users and teams.',
 ];
 
-const toneClasses = {
-  primary: 'bg-primary/10 text-primary',
-  secondary: 'bg-secondary/10 text-secondary',
-  accent: 'bg-accent/10 text-accent',
-};
-
 function CardHeading({
   icon: Icon,
   tone,
@@ -202,7 +198,7 @@ function CardHeading({
   description,
 }: {
   icon: IconType | typeof GraduationCap;
-  tone: keyof typeof toneClasses;
+  tone: Tone;
   title: string;
   description: string;
 }) {
@@ -219,7 +215,61 @@ function CardHeading({
   );
 }
 
+function ToolTile({
+  name,
+  description,
+  icon: Icon,
+  isActive,
+  onToggle,
+}: {
+  name: string;
+  description: string;
+  icon: IconType;
+  isActive: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <RevealItem className="group relative">
+      <button
+        type="button"
+        onClick={(event) => {
+          event.stopPropagation();
+          onToggle();
+        }}
+        aria-expanded={isActive}
+        className="flex w-full flex-col items-center gap-2 rounded-2xl border border-border bg-card/70 px-3 py-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_50px_rgba(37,99,235,0.16)]"
+      >
+        <div className="rounded-xl bg-primary/10 p-2 text-primary">
+          <Icon className="h-4.5 w-4.5" />
+        </div>
+        <span className="text-xs text-foreground">{name}</span>
+      </button>
+
+      <div
+        className={`pointer-events-none absolute bottom-full left-1/2 z-20 mb-3 w-52 -translate-x-1/2 rounded-2xl border border-primary/30 bg-card/95 px-4 py-3 text-left text-xs leading-6 text-muted-foreground shadow-[0_20px_60px_rgba(19,18,38,0.18)] backdrop-blur-md transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 ${
+          isActive ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0'
+        }`}
+      >
+        <span className="mb-1 block text-[11px] font-medium uppercase tracking-[0.14em] text-primary">
+          {name}
+        </span>
+        {description}
+        <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-card/95" />
+      </div>
+    </RevealItem>
+  );
+}
+
 export function About() {
+  const [activeTool, setActiveTool] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!activeTool) return;
+    const close = () => setActiveTool(null);
+    window.addEventListener('click', close);
+    return () => window.removeEventListener('click', close);
+  }, [activeTool]);
+
   return (
     <section id="about" className="bg-background px-6 py-12 md:px-10 md:py-16 lg:px-16 xl:px-20">
       <div className="mx-auto max-w-[1600px]">
@@ -371,24 +421,15 @@ export function About() {
               />
 
               <RevealGroup className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-                {tools.map(({ name, description, icon: Icon }) => (
-                  <RevealItem
+                {tools.map(({ name, description, icon }) => (
+                  <ToolTile
                     key={name}
-                    className="group relative flex flex-col items-center gap-2 rounded-2xl border border-border bg-card/70 px-3 py-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_50px_rgba(37,99,235,0.16)]"
-                  >
-                    <div className="rounded-xl bg-primary/10 p-2 text-primary">
-                      <Icon className="h-4.5 w-4.5" />
-                    </div>
-                    <span className="text-xs text-foreground">{name}</span>
-
-                    <div className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-3 w-52 -translate-x-1/2 translate-y-1 rounded-2xl border border-primary/30 bg-card/95 px-4 py-3 text-left text-xs leading-6 text-muted-foreground opacity-0 shadow-[0_20px_60px_rgba(19,18,38,0.18)] backdrop-blur-md transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
-                      <span className="mb-1 block text-[11px] font-medium uppercase tracking-[0.14em] text-primary">
-                        {name}
-                      </span>
-                      {description}
-                      <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-card/95" />
-                    </div>
-                  </RevealItem>
+                    name={name}
+                    description={description}
+                    icon={icon}
+                    isActive={activeTool === name}
+                    onToggle={() => setActiveTool((prev) => (prev === name ? null : name))}
+                  />
                 ))}
               </RevealGroup>
             </article>

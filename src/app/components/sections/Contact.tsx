@@ -1,6 +1,7 @@
 import { Mail } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
 import { Reveal, RevealGroup, RevealItem } from '../motion/Reveal';
+import { toneClasses } from '../../lib/tone';
 
 const CONTACT_EMAIL = 'hirorimskayombo@gmail.com';
 const GITHUB_URL = 'https://github.com/kayombo-falcom';
@@ -25,12 +26,6 @@ const services = [
   { label: 'Portfolio Sites', tone: 'secondary' },
   { label: 'Design-to-Code', tone: 'accent' },
 ] as const;
-
-const toneClasses = {
-  primary: 'bg-primary/10 text-primary',
-  secondary: 'bg-secondary/10 text-secondary',
-  accent: 'bg-accent/10 text-accent',
-};
 
 export function Contact() {
   return (

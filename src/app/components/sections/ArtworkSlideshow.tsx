@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import worldSmileDay from '../../../assets/posters/world-smile-day.jpg';
@@ -22,26 +22,49 @@ const artworkSlides: ArtworkSlide[] = [
   { src: cyberMonday, title: 'Cyber Monday' },
 ];
 
-const PER_PAGE = 3;
 const REAL_LENGTH = artworkSlides.length;
 
-// Clone a slide off each end so the track can slide one item at a time and
-// wrap around seamlessly, then jump back to the real range unnoticed.
-const extendedSlides = [
-  ...artworkSlides.slice(-PER_PAGE),
-  ...artworkSlides,
-  ...artworkSlides.slice(0, PER_PAGE),
-];
+function getPerPage() {
+  if (typeof window === 'undefined') return 3;
+  if (window.innerWidth < 640) return 1;
+  if (window.innerWidth < 1024) return 2;
+  return 3;
+}
 
 export function ArtworkSlideshow() {
-  const [trackIndex, setTrackIndex] = useState(PER_PAGE);
+  const [perPage, setPerPage] = useState(getPerPage);
+  const [trackIndex, setTrackIndex] = useState(() => getPerPage());
   const [instant, setInstant] = useState(false);
   const [paused, setPaused] = useState(false);
+  const prevPerPage = useRef(perPage);
+
+  // Clone a slide off each end so the track can slide one item at a time and
+  // wrap around seamlessly, then jump back to the real range unnoticed.
+  const extendedSlides = useMemo(
+    () => [...artworkSlides.slice(-perPage), ...artworkSlides, ...artworkSlides.slice(0, perPage)],
+    [perPage],
+  );
 
   const step = (direction: 1 | -1) => {
     setInstant(false);
     setTrackIndex((prev) => prev + direction);
   };
+
+  useEffect(() => {
+    const onResize = () => setPerPage(getPerPage());
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  useEffect(() => {
+    if (prevPerPage.current === perPage) return;
+    const realIndexBeforeResize =
+      ((trackIndex - prevPerPage.current) % REAL_LENGTH + REAL_LENGTH) % REAL_LENGTH;
+    prevPerPage.current = perPage;
+    setInstant(true);
+    setTrackIndex(perPage + realIndexBeforeResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [perPage]);
 
   useEffect(() => {
     if (paused) return;
@@ -51,20 +74,20 @@ export function ArtworkSlideshow() {
   }, [paused]);
 
   const handleAnimationComplete = () => {
-    if (trackIndex >= PER_PAGE + REAL_LENGTH) {
+    if (trackIndex >= perPage + REAL_LENGTH) {
       setInstant(true);
       setTrackIndex(trackIndex - REAL_LENGTH);
-    } else if (trackIndex < PER_PAGE) {
+    } else if (trackIndex < perPage) {
       setInstant(true);
       setTrackIndex(trackIndex + REAL_LENGTH);
     }
   };
 
-  const realIndex = ((trackIndex - PER_PAGE) % REAL_LENGTH + REAL_LENGTH) % REAL_LENGTH;
+  const realIndex = ((trackIndex - perPage) % REAL_LENGTH + REAL_LENGTH) % REAL_LENGTH;
 
   const goToReal = (target: number) => {
     setInstant(false);
-    setTrackIndex(PER_PAGE + target);
+    setTrackIndex(perPage + target);
   };
 
   return (
@@ -77,14 +100,14 @@ export function ArtworkSlideshow() {
         <motion.div
           className="flex"
           style={{ willChange: 'transform' }}
-          animate={{ x: `-${trackIndex * (100 / PER_PAGE)}%` }}
+          animate={{ x: `-${trackIndex * (100 / perPage)}%` }}
           transition={instant ? { duration: 0 } : { duration: 0.7, ease: [0.65, 0, 0.35, 1] }}
           onAnimationComplete={handleAnimationComplete}
         >
           {extendedSlides.map((slide, i) => (
             <div
               key={`${slide.src}-${i}`}
-              style={{ flex: '0 0 33.3333%' }}
+              style={{ flex: `0 0 ${100 / perPage}%` }}
               className="px-2"
             >
               <div className="group overflow-hidden rounded-2xl border border-border">

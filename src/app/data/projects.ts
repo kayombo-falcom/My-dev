@@ -21,6 +21,14 @@ export type DesignProject = {
 
 export type Project = DevProject | DesignProject;
 
+export function isDevProject(project: Project): project is DevProject {
+  return project.category === 'development';
+}
+
+export function getProjectTags(project: Project): string[] {
+  return isDevProject(project) ? project.tech : project.tools;
+}
+
 export const developmentProjects: DevProject[] = [
   {
     id: 1,
@@ -88,5 +96,3 @@ export const designProjects: DesignProject[] = [
     view: '#',
   },
 ];
-
-export const projects: Project[] = [...developmentProjects, ...designProjects];
