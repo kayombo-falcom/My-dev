@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   GraduationCap,
   Hammer,
+  Info,
   Lightbulb,
   Target,
 } from 'lucide-react';
@@ -237,8 +238,12 @@ function ToolTile({
           onToggle();
         }}
         aria-expanded={isActive}
-        className="flex w-full flex-col items-center gap-2 rounded-2xl border border-border bg-card/70 px-3 py-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_50px_rgba(37,99,235,0.16)]"
+        aria-label={`${name}: show details`}
+        className={`relative flex w-full flex-col items-center gap-2 rounded-2xl border px-3 py-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_50px_rgba(37,99,235,0.16)] ${
+          isActive ? 'border-primary/30 bg-card shadow-[0_20px_50px_rgba(37,99,235,0.16)]' : 'border-border bg-card/70'
+        }`}
       >
+        <Info className="absolute top-2 right-2 h-3 w-3 text-muted-foreground/50 transition-colors duration-300 group-hover:text-primary/70" />
         <div className="rounded-xl bg-primary/10 p-2 text-primary">
           <Icon className="h-4.5 w-4.5" />
         </div>

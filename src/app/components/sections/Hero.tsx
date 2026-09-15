@@ -1,8 +1,9 @@
 import { ArrowDown, ArrowRight, Mail } from 'lucide-react';
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import profilePhoto from '../../../assets/kayombo03.png';
+import profilePhoto from '../../../assets/kayombo03.jpg';
 import { Reveal, RevealGroup, RevealItem } from '../motion/Reveal';
+import { AvailabilityBadge } from '../ui/availability-badge';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { toneClasses } from '../../lib/tone';
@@ -22,9 +23,7 @@ export function Hero() {
       <div className="grid gap-10 px-6 py-10 md:px-10 md:py-12 xl:grid-cols-[minmax(0,1.05fr)_minmax(20rem,0.95fr)] xl:items-center xl:gap-12 xl:px-14 xl:py-14">
         <div className="max-w-3xl">
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 text-xs uppercase tracking-[0.22em] text-muted-foreground">
-              Available for select freelance work
-            </span>
+            <AvailabilityBadge />
           </Reveal>
 
           <Reveal delay={0.08}>

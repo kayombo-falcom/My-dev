@@ -93,8 +93,13 @@ export function ArtworkSlideshow() {
   return (
     <div
       className="glass-panel relative rounded-[28px] border border-border p-4 md:p-6"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onPointerEnter={(event) => {
+        if (event.pointerType === 'mouse') setPaused(true);
+      }}
+      onPointerLeave={() => setPaused(false)}
+      onPointerDown={() => setPaused(true)}
+      onPointerUp={() => setPaused(false)}
+      onPointerCancel={() => setPaused(false)}
     >
       <div className="overflow-hidden">
         <motion.div
