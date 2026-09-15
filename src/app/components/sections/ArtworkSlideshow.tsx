@@ -1,20 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import easter2026 from '../../../assets/posters/easter2026.png';
-import harusIcon04 from '../../../assets/posters/harus.icon-04.png';
-import harusIcon from '../../../assets/posters/harus.icon.png';
-import harusiYetuLogoMockup from '../../../assets/posters/harusi-yetu-logo-mockup.png';
-import harusiyetu02 from '../../../assets/posters/harusiyetu02.png';
-import hySep26 from '../../../assets/posters/hy-sep26-1b.png';
-import knowledgeHub1 from '../../../assets/posters/knowledge-hub-phz000011.png';
-import knowledgeHub2 from '../../../assets/posters/knowledge-hub-phz10.png';
-import meiMos from '../../../assets/posters/mei-mos.png';
+import easter2026 from '../../../assets/posters/easter2026.jpg';
+import harusIcon04 from '../../../assets/posters/harus.icon-04.jpg';
+import harusIcon from '../../../assets/posters/harus.icon.jpg';
+import harusiYetuLogoMockup from '../../../assets/posters/harusi-yetu-logo-mockup.jpg';
+import harusiyetu02 from '../../../assets/posters/harusiyetu02.jpg';
+import hySep26 from '../../../assets/posters/hy-sep26-1b.jpg';
+import knowledgeHub1 from '../../../assets/posters/knowledge-hub-phz000011.jpg';
+import knowledgeHub2 from '../../../assets/posters/knowledge-hub-phz10.jpg';
+import meiMos from '../../../assets/posters/mei-mos.jpg';
 import parokia from '../../../assets/posters/parokia.1.png';
-import phina from '../../../assets/posters/phina.png';
-import qgsh002 from '../../../assets/posters/qgsh-002.png';
-import qgsh1 from '../../../assets/posters/qgsh-1.png';
-import quote1 from '../../../assets/posters/quote-1.png';
+import phina from '../../../assets/posters/phina.jpg';
+import qgsh002 from '../../../assets/posters/qgsh-002.jpg';
+import qgsh1 from '../../../assets/posters/qgsh-1.jpg';
+import quote1 from '../../../assets/posters/quote-1.jpg';
 
 type ArtworkSlide = {
   src: string;
@@ -132,11 +132,17 @@ export function ArtworkSlideshow() {
               className="px-2"
             >
               <div className="group overflow-hidden rounded-2xl border border-border">
-                <div className="aspect-[3/4] overflow-hidden">
+                <div className="relative aspect-square overflow-hidden bg-muted">
+                  <img
+                    src={slide.src}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-2xl"
+                  />
                   <img
                     src={slide.src}
                     alt={slide.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="relative h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <p className="px-3 py-2 text-sm font-medium text-foreground md:text-base">

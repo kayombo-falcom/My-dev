@@ -1,9 +1,13 @@
+import portfolioPreview from '../../assets/portfolio-preview.jpg';
+import netwatchLogo from '../../assets/netwatch-logo.png';
+
 export type DevProject = {
   id: number;
   category: 'development';
   title: string;
   description: string;
   image: string;
+  imageBackground?: 'white';
   tech: string[];
   demo: string;
   github: string;
@@ -15,6 +19,7 @@ export type DesignProject = {
   title: string;
   description: string;
   image: string;
+  imageBackground?: 'white';
   tools: string[];
   view: string;
 };
@@ -44,22 +49,24 @@ export const developmentProjects: DevProject[] = [
   {
     id: 2,
     category: 'development',
-    title: 'Task Management App',
+    title: 'NetWatch',
     description:
-      'Collaborative project management tool with real-time updates, kanban boards, and team chat.',
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
-    tech: ['Next.js', 'TypeScript', 'MongoDB', 'Socket.io'],
+      'Network monitoring and investigation system that discovers and identifies connected devices, tracks Wi-Fi signal and bandwidth, and surfaces alerts through a live dashboard.',
+    image: netwatchLogo,
+    imageBackground: 'white',
+    tech: ['Next.js', 'Django', 'PostgreSQL'],
     demo: '#',
     github: '#',
   },
   {
     id: 3,
     category: 'development',
-    title: 'Portfolio CMS',
-    description: 'Content management system for creative professionals with drag-and-drop interface.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
-    tech: ['React', 'Express', 'AWS S3', 'GraphQL'],
-    demo: '#',
-    github: '#',
+    title: 'Personal Portfolio',
+    description:
+      'This portfolio site — a responsive showcase of software development and graphic design work, with dark/light theming and smooth animations.',
+    image: portfolioPreview,
+    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+    demo: '/',
+    github: 'https://github.com/kayombo-falcom/My-dev',
   },
 ];
