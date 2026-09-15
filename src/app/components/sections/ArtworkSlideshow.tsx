@@ -132,11 +132,11 @@ export function ArtworkSlideshow() {
               className="px-2"
             >
               <div className="group overflow-hidden rounded-2xl border border-border">
-                <div className="aspect-[3/4] overflow-hidden">
+                <div className="aspect-square overflow-hidden bg-muted">
                   <img
                     src={slide.src}
                     alt={slide.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <p className="px-3 py-2 text-sm font-medium text-foreground md:text-base">

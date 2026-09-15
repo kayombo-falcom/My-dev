@@ -33,11 +33,11 @@ function FeaturedCard({
 }) {
   return (
     <Link to={href} className="project-card group">
-      <div className="relative aspect-video overflow-hidden">
+      <div className="relative aspect-video overflow-hidden bg-muted">
         <img
           src={image}
           alt={imageAlt}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
         />
       </div>
       <div className="p-6">
