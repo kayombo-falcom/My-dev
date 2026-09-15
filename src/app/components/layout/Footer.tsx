@@ -35,7 +35,7 @@ export function Footer() {
             </div>
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+              <p className="border-b border-border pb-3 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
                 Navigate
               </p>
               <ul className="mt-4 space-y-3">
@@ -53,24 +53,14 @@ export function Footer() {
             </div>
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+              <p className="border-b border-border pb-3 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
                 Get in touch
               </p>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="mt-4 flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                className="mt-4 block text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
               >
-                <Mail className="h-4 w-4" />
                 {CONTACT_EMAIL}
-              </a>
-              <a
-                href={GITHUB_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-3 flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground"
-              >
-                <SiGithub className="h-4 w-4" />
-                GitHub
               </a>
               <p className="mt-4 text-sm leading-7 text-muted-foreground">
                 Available for select freelance and collaboration opportunities.
@@ -79,13 +69,28 @@ export function Footer() {
           </div>
         </Reveal>
 
-        <div className="mt-12 flex flex-col items-center gap-4 border-t border-border pt-6 sm:flex-row sm:justify-between">
+        <div className="mt-12 flex flex-col items-center gap-6 border-t border-border pt-6 sm:flex-row sm:justify-between">
           <p className="text-xs text-muted-foreground/80">
             © {new Date().getFullYear()} Hirorims Kayombo. All rights reserved.
           </p>
-          <p className="text-xs text-muted-foreground/80">
-            Built with React &amp; Tailwind CSS
-          </p>
+          <div className="flex items-center gap-3">
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              aria-label="Email"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors duration-300 hover:border-primary/30 hover:text-foreground"
+            >
+              <Mail className="h-4 w-4" />
+            </a>
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors duration-300 hover:border-primary/30 hover:text-foreground"
+            >
+              <SiGithub className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
