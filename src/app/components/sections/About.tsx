@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import {
   GraduationCap,
   Hammer,
+  Info,
   Lightbulb,
   Target,
 } from 'lucide-react';
@@ -20,8 +22,9 @@ import {
   SiTailwindcss,
   SiTypescript,
 } from 'react-icons/si';
-import { TbApi, TbBrandAdobeIllustrator, TbBrandAdobePhotoshop } from 'react-icons/tb';
+import { TbApi } from 'react-icons/tb';
 import { Reveal, RevealGroup, RevealItem } from '../motion/Reveal';
+import { toneClasses, type Tone } from '../../lib/tone';
 
 const education = [
   {
@@ -128,16 +131,6 @@ const tools = [
     description: 'Used for interface planning, wireframes, and design collaboration.',
     icon: SiFigma,
   },
-  {
-    name: 'Adobe Photoshop',
-    description: 'Used for image editing and digital graphic production.',
-    icon: TbBrandAdobePhotoshop,
-  },
-  {
-    name: 'Adobe Illustrator',
-    description: 'Used for vector design, logos, and brand graphics.',
-    icon: TbBrandAdobeIllustrator,
-  },
   { name: 'Git', description: 'Supports version control and structured project workflows.', icon: SiGit },
   {
     name: 'GitHub',
@@ -189,12 +182,6 @@ const goals = [
   'To keep growing as a developer by writing clean, maintainable code and contributing to projects that create real value for users and teams.',
 ];
 
-const toneClasses = {
-  primary: 'bg-primary/10 text-primary',
-  secondary: 'bg-secondary/10 text-secondary',
-  accent: 'bg-accent/10 text-accent',
-};
-
 function CardHeading({
   icon: Icon,
   tone,
@@ -202,7 +189,7 @@ function CardHeading({
   description,
 }: {
   icon: IconType | typeof GraduationCap;
-  tone: keyof typeof toneClasses;
+  tone: Tone;
   title: string;
   description: string;
 }) {
@@ -211,7 +198,7 @@ function CardHeading({
       <div className={`rounded-2xl p-3 ${toneClasses[tone]}`}>
         <Icon className="h-5 w-5" />
       </div>
-      <div>
+      <div className="min-w-0 flex-1">
         <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">{title}</p>
         <p className="mt-2 text-sm leading-7 text-muted-foreground">{description}</p>
       </div>
@@ -219,7 +206,65 @@ function CardHeading({
   );
 }
 
+function ToolTile({
+  name,
+  description,
+  icon: Icon,
+  isActive,
+  onToggle,
+}: {
+  name: string;
+  description: string;
+  icon: IconType;
+  isActive: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <RevealItem className="group relative">
+      <button
+        type="button"
+        onClick={(event) => {
+          event.stopPropagation();
+          onToggle();
+        }}
+        aria-expanded={isActive}
+        aria-label={`${name}: show details`}
+        className={`relative flex w-full flex-col items-center gap-2 rounded-2xl border px-3 py-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_50px_rgba(37,99,235,0.16)] ${
+          isActive ? 'border-primary/30 bg-card shadow-[0_20px_50px_rgba(37,99,235,0.16)]' : 'border-border bg-card/70'
+        }`}
+      >
+        <Info className="absolute top-2 right-2 h-3 w-3 text-muted-foreground/50 transition-colors duration-300 group-hover:text-primary/70" />
+        <div className="rounded-xl bg-primary/10 p-2 text-primary">
+          <Icon className="h-4.5 w-4.5" />
+        </div>
+        <span className="text-xs text-foreground">{name}</span>
+      </button>
+
+      <div
+        className={`pointer-events-none absolute bottom-full left-1/2 z-20 mb-3 w-52 -translate-x-1/2 rounded-2xl border border-primary/30 bg-card/95 px-4 py-3 text-left text-xs leading-6 text-muted-foreground shadow-[0_20px_60px_rgba(19,18,38,0.18)] backdrop-blur-md transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 ${
+          isActive ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0'
+        }`}
+      >
+        <span className="mb-1 block text-[11px] font-medium uppercase tracking-[0.14em] text-primary">
+          {name}
+        </span>
+        {description}
+        <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-card/95" />
+      </div>
+    </RevealItem>
+  );
+}
+
 export function About() {
+  const [activeTool, setActiveTool] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!activeTool) return;
+    const close = () => setActiveTool(null);
+    window.addEventListener('click', close);
+    return () => window.removeEventListener('click', close);
+  }, [activeTool]);
+
   return (
     <section id="about" className="bg-background px-6 py-12 md:px-10 md:py-16 lg:px-16 xl:px-20">
       <div className="mx-auto max-w-[1600px]">
@@ -243,18 +288,18 @@ export function About() {
 
         <Reveal delay={0.08}>
           <div className="mt-10 border-t border-border pt-10">
-            <div className="max-w-5xl">
+            <div className="max-w-6xl">
               <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Profile</p>
               <h3 className="mt-3 text-2xl leading-tight text-foreground md:text-3xl">
                 Software Developer, Graphic Designer, and Security Awareness Specialist
               </h3>
-              <p className="mt-5 text-base leading-8 text-muted-foreground md:text-lg">
+              <p className="mt-5 text-pretty text-base leading-8 text-muted-foreground md:text-lg">
                 I combine full-stack development, visual design, and cybersecurity to build
                 digital solutions that are functional, intuitive, and secure. I work across both
                 frontend and backend development, with a strong focus on clean architecture,
                 performance, usability, and responsive design.
               </p>
-              <p className="mt-4 text-base leading-8 text-muted-foreground md:text-lg">
+              <p className="mt-4 text-pretty text-base leading-8 text-muted-foreground md:text-lg">
                 I also apply visual and UI/UX principles to create interfaces that are modern,
                 consistent, and easy to navigate. With a cybersecurity mindset, I consider
                 security and best practices throughout the development process, helping create
@@ -371,24 +416,15 @@ export function About() {
               />
 
               <RevealGroup className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-                {tools.map(({ name, description, icon: Icon }) => (
-                  <RevealItem
+                {tools.map(({ name, description, icon }) => (
+                  <ToolTile
                     key={name}
-                    className="group relative flex flex-col items-center gap-2 rounded-2xl border border-border bg-card/70 px-3 py-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_50px_rgba(37,99,235,0.16)]"
-                  >
-                    <div className="rounded-xl bg-primary/10 p-2 text-primary">
-                      <Icon className="h-4.5 w-4.5" />
-                    </div>
-                    <span className="text-xs text-foreground">{name}</span>
-
-                    <div className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-3 w-52 -translate-x-1/2 translate-y-1 rounded-2xl border border-primary/30 bg-card/95 px-4 py-3 text-left text-xs leading-6 text-muted-foreground opacity-0 shadow-[0_20px_60px_rgba(19,18,38,0.18)] backdrop-blur-md transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
-                      <span className="mb-1 block text-[11px] font-medium uppercase tracking-[0.14em] text-primary">
-                        {name}
-                      </span>
-                      {description}
-                      <span className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-card/95" />
-                    </div>
-                  </RevealItem>
+                    name={name}
+                    description={description}
+                    icon={icon}
+                    isActive={activeTool === name}
+                    onToggle={() => setActiveTool((prev) => (prev === name ? null : name))}
+                  />
                 ))}
               </RevealGroup>
             </article>

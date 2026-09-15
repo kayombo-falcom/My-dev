@@ -4,7 +4,7 @@ import { Button } from '../../components/ui/button';
 
 export function NotFoundPage() {
   return (
-    <div className="mx-auto flex max-w-[1600px] flex-col items-center px-6 py-24 text-center md:px-8 md:py-32">
+    <div className="mx-auto flex max-w-[1600px] flex-col items-center px-6 py-24 text-center md:px-10 md:py-32 lg:px-16 xl:px-20">
       <p className="text-sm uppercase tracking-[0.24em] text-primary">404</p>
       <h1 className="mt-4 text-4xl font-semibold text-foreground md:text-5xl">Page not found</h1>
       <p className="mt-5 max-w-md text-base leading-8 text-muted-foreground">

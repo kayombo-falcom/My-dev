@@ -4,16 +4,70 @@ import { Hero } from '../../components/sections/Hero';
 import { Reveal, RevealGroup, RevealItem } from '../../components/motion/Reveal';
 import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
-import { developmentProjects, designProjects } from '../../data/projects';
+import { developmentProjects, getProjectTags } from '../../data/projects';
+import { toneClasses } from '../../lib/tone';
+import graphicDesignPreview from '../../../assets/posters/hy-sep26-1b.png';
+
+const graphicDesignDisciplines = ['Logo Design', 'Posters', 'Banners', 'Icons', 'UI/UX'];
+
+function FeaturedCard({
+  href,
+  image,
+  imageAlt,
+  label,
+  labelToneClass,
+  title,
+  description,
+  tags,
+  tagToneClass,
+}: {
+  href: string;
+  image: string;
+  imageAlt: string;
+  label: string;
+  labelToneClass: string;
+  title: string;
+  description: string;
+  tags: string[];
+  tagToneClass: string;
+}) {
+  return (
+    <Link to={href} className="project-card group">
+      <div className="relative aspect-video overflow-hidden">
+        <img
+          src={image}
+          alt={imageAlt}
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+      </div>
+      <div className="p-6">
+        <p className={`text-xs font-semibold uppercase tracking-[0.2em] ${labelToneClass}`}>{label}</p>
+        <h3 className="mt-2 text-2xl">{title}</h3>
+        <p className="mt-2 text-sm leading-7 text-muted-foreground">{description}</p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {tags.map((item) => (
+            <Badge
+              key={item}
+              variant="outline"
+              className={`rounded-full border-transparent text-xs ${tagToneClass}`}
+            >
+              {item}
+            </Badge>
+          ))}
+        </div>
+      </div>
+    </Link>
+  );
+}
 
 export function HomePage() {
-  const featuredProjects = [developmentProjects[0], designProjects[0]];
+  const featuredDevProject = developmentProjects[0];
 
   return (
     <div className="bg-background">
       <Hero />
 
-      <section className="border-t border-border px-6 py-14 md:px-10 md:py-16 xl:px-14">
+      <section className="border-t border-border px-6 py-14 md:px-10 md:py-16 lg:px-16 xl:px-20">
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="flex items-start gap-4">
@@ -38,52 +92,37 @@ export function HomePage() {
         </Reveal>
 
         <RevealGroup className="mt-10 grid gap-8 md:grid-cols-2">
-          {featuredProjects.map((project) => (
-            <RevealItem key={project.id}>
-              <Link
-                to="/projects"
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_50px_rgba(37,99,235,0.16)]"
-              >
-                <div className="relative aspect-video overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                <div className="p-6">
-                  <p className={`text-xs font-semibold uppercase tracking-[0.2em] ${
-                    project.category === 'development' ? 'text-primary' : 'text-accent'
-                  }`}>
-                    {project.category === 'development' ? 'Software Development' : 'Graphic Design'}
-                  </p>
-                  <h3 className="mt-2 text-2xl">{project.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                    {project.description}
-                  </p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {(project.category === 'development' ? project.tech : project.tools).map((item) => (
-                      <Badge
-                        key={item}
-                        variant="outline"
-                        className={`rounded-full border-transparent text-xs ${
-                          project.category === 'development'
-                            ? 'bg-primary/10 text-primary'
-                            : 'bg-accent/10 text-accent'
-                        }`}
-                      >
-                        {item}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </Link>
-            </RevealItem>
-          ))}
+          <RevealItem>
+            <FeaturedCard
+              href="/projects#software-development"
+              image={featuredDevProject.image}
+              imageAlt={featuredDevProject.title}
+              label="Software Development"
+              labelToneClass="text-primary"
+              title={featuredDevProject.title}
+              description={featuredDevProject.description}
+              tags={getProjectTags(featuredDevProject)}
+              tagToneClass={toneClasses.primary}
+            />
+          </RevealItem>
+
+          <RevealItem>
+            <FeaturedCard
+              href="/projects#graphic-design"
+              image={graphicDesignPreview}
+              imageAlt="Graphic design work"
+              label="Graphic Design"
+              labelToneClass="text-accent"
+              title="Visual & Brand Design"
+              description="Logo design, posters, banners, icons, and UI visuals crafted for clarity and brand consistency."
+              tags={graphicDesignDisciplines}
+              tagToneClass={toneClasses.accent}
+            />
+          </RevealItem>
         </RevealGroup>
       </section>
 
-      <section className="border-t border-border px-6 py-14 md:px-10 md:py-16 xl:px-14">
+      <section className="border-t border-border px-6 py-14 md:px-10 md:py-16 lg:px-16 xl:px-20">
         <Reveal>
           <div className="glass-panel flex flex-col items-center gap-6 rounded-[28px] border border-border px-8 py-12 text-center">
             <h2 className="max-w-2xl text-2xl font-semibold text-foreground md:text-3xl">

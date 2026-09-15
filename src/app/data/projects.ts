@@ -21,6 +21,14 @@ export type DesignProject = {
 
 export type Project = DevProject | DesignProject;
 
+export function isDevProject(project: Project): project is DevProject {
+  return project.category === 'development';
+}
+
+export function getProjectTags(project: Project): string[] {
+  return isDevProject(project) ? project.tech : project.tools;
+}
+
 export const developmentProjects: DevProject[] = [
   {
     id: 1,
@@ -55,38 +63,3 @@ export const developmentProjects: DevProject[] = [
     github: '#',
   },
 ];
-
-export const designProjects: DesignProject[] = [
-  {
-    id: 4,
-    category: 'design',
-    title: 'Brand Identity — Trust Microfinance',
-    description:
-      'Logo system, color palette, and marketing collateral built for a consistent brand presence across print and digital.',
-    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&h=400&fit=crop',
-    tools: ['Illustrator', 'Photoshop'],
-    view: '#',
-  },
-  {
-    id: 5,
-    category: 'design',
-    title: 'Campaign Posters — IT Knowledge Hub',
-    description:
-      'A poster and banner series for marketing campaigns, designed for clear messaging and brand consistency.',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
-    tools: ['Photoshop', 'Illustrator'],
-    view: '#',
-  },
-  {
-    id: 6,
-    category: 'design',
-    title: 'Portfolio Visual System',
-    description:
-      'Typography, color, and UI kit exploration used to shape the visual language of this portfolio site.',
-    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&h=400&fit=crop&sat=-20',
-    tools: ['Figma', 'Illustrator'],
-    view: '#',
-  },
-];
-
-export const projects: Project[] = [...developmentProjects, ...designProjects];

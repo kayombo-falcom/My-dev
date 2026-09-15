@@ -1,10 +1,12 @@
 import { ArrowDown, ArrowRight, Mail } from 'lucide-react';
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import profilePhoto from '../../../assets/kayombo03.png';
+import profilePhoto from '../../../assets/kayombo03.jpg';
 import { Reveal, RevealGroup, RevealItem } from '../motion/Reveal';
+import { AvailabilityBadge } from '../ui/availability-badge';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
+import { toneClasses } from '../../lib/tone';
 
 const focusAreas = [
   { label: 'React', tone: 'primary' },
@@ -15,21 +17,13 @@ const focusAreas = [
   { label: 'Figma', tone: 'accent' },
 ] as const;
 
-const toneClasses = {
-  primary: 'bg-primary/10 text-primary',
-  secondary: 'bg-secondary/10 text-secondary',
-  accent: 'bg-accent/10 text-accent',
-};
-
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="grid gap-10 px-6 py-10 md:px-10 md:py-12 xl:grid-cols-[minmax(0,1.05fr)_minmax(20rem,0.95fr)] xl:items-center xl:gap-12 xl:px-14 xl:py-14">
+      <div className="grid gap-10 px-6 py-10 md:px-10 md:py-12 lg:px-16 xl:grid-cols-[minmax(0,1.05fr)_minmax(20rem,0.95fr)] xl:items-center xl:gap-12 xl:px-20 xl:py-14">
         <div className="max-w-3xl">
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 text-xs uppercase tracking-[0.22em] text-muted-foreground">
-              Available for select freelance work
-            </span>
+            <AvailabilityBadge />
           </Reveal>
 
           <Reveal delay={0.08}>
@@ -80,16 +74,13 @@ export function Hero() {
         </div>
 
         <Reveal delay={0.15} y={26}>
-          <div className="relative">
-            <div className="hero-portrait-glow absolute -inset-4 rounded-[2rem] opacity-70" />
-            <div className="relative rounded-3xl bg-card p-3 shadow-[0_30px_80px_rgba(19,18,38,0.2)]">
-              <div className="overflow-hidden rounded-2xl bg-muted">
-                <img
-                  src={profilePhoto}
-                  alt="HIRORIMS KAYOMBO"
-                  className="aspect-[4/3] max-h-[420px] w-full object-cover object-[center_15%]"
-                />
-              </div>
+          <div className="relative mx-auto max-w-sm xl:mx-0">
+            <div className="overflow-hidden rounded-2xl bg-muted shadow-[0_30px_80px_rgba(19,18,38,0.2)]">
+              <img
+                src={profilePhoto}
+                alt="HIRORIMS KAYOMBO"
+                className="aspect-[4/3] max-h-[280px] w-full object-cover object-[center_15%]"
+              />
             </div>
           </div>
         </Reveal>

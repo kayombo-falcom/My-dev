@@ -1,6 +1,8 @@
 import { Mail } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
 import { Reveal, RevealGroup, RevealItem } from '../motion/Reveal';
+import { AvailabilityBadge } from '../ui/availability-badge';
+import { toneClasses } from '../../lib/tone';
 
 const CONTACT_EMAIL = 'hirorimskayombo@gmail.com';
 const GITHUB_URL = 'https://github.com/kayombo-falcom';
@@ -25,12 +27,6 @@ const services = [
   { label: 'Portfolio Sites', tone: 'secondary' },
   { label: 'Design-to-Code', tone: 'accent' },
 ] as const;
-
-const toneClasses = {
-  primary: 'bg-primary/10 text-primary',
-  secondary: 'bg-secondary/10 text-secondary',
-  accent: 'bg-accent/10 text-accent',
-};
 
 export function Contact() {
   return (
@@ -86,9 +82,7 @@ export function Contact() {
 
         <Reveal delay={0.1} className="mt-6">
           <div className="glass-panel flex flex-col items-center gap-3 rounded-[28px] border border-border px-8 py-10 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 text-xs uppercase tracking-[0.22em] text-muted-foreground">
-              Available for select freelance work
-            </span>
+            <AvailabilityBadge />
             <p className="max-w-xl text-sm leading-7 text-muted-foreground">
               Reach out directly by email or GitHub — I typically respond within 1 business day.
             </p>
