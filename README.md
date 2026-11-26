@@ -8,11 +8,11 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
 ![Netlify](https://img.shields.io/badge/Deployed_on-Netlify-00C7B7?logo=netlify&logoColor=white)
 
-**🔗 Live site:** [hirorims.netlify.app](https://hirorims.netlify.app/)
+**Live site:** [hirorims.netlify.app](https://hirorims.netlify.app/)
 
 A fast, responsive portfolio and blog built with React. It showcases my projects and design work, and includes a private admin panel for managing content.
 
-## ✨ Features
+## Features
 
 - **Public site:** Home, About, Projects, Reach Me
 - **Admin panel:** dashboard with charts, file uploads (drag & drop), settings
@@ -21,7 +21,7 @@ A fast, responsive portfolio and blog built with React. It showcases my projects
 - **Fully responsive:** mobile first, with an animated mobile menu
 - **Reusable UI kit** built on accessible Radix UI primitives
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Area | Tools |
 | --- | --- |
@@ -32,7 +32,7 @@ A fast, responsive portfolio and blog built with React. It showcases my projects
 | Forms & data | react-hook-form, date-fns, react-dnd |
 | Design | Figma, Photoshop, Illustrator |
 
-## 🚀 Getting Started
+## Getting Started
 
 ```bash
 git clone https://github.com/kayombo-falcom/My-dev.git
@@ -42,7 +42,7 @@ npm run dev      # local dev server
 npm run build    # production build
 ```
 
-## 📁 Structure
+## Structure
 
 ```
 src/
@@ -55,10 +55,10 @@ src/
 └─ styles/      # Tailwind, theme tokens, fonts
 ```
 
-## 📬 Contact
+## Contact
 
 Open to freelance and full-time roles. Reach me through the **Reach Me** page on [the live site](https://hirorims.netlify.app/) or on [GitHub](https://github.com/kayombo-falcom).
 
-## 📄 License
+## License
 
 © 2026 Hirorims Kayombo. All rights reserved. Third-party credits are listed in [ATTRIBUTIONS.md](ATTRIBUTIONS.md).
